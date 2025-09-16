@@ -1,4 +1,3 @@
-[🏠 Home](/) › [📚 tif1336-web-framework](/tif1336-web-framework/) › [📅 2025s1](/tif1336-web-framework/2025s1/) › Lesson 0
 # Membuat Virtual Environment di Python
 
 ## Apa itu Virtual Environment?
