@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Django untuk pemula - Part 2. Membuat Blog App
 ---
 Kali ini kita akan membuat app di dalam Django. App tersebut adalah sebuah Blog. Kita akan memulai dari blog yang sederhana, yaitu isi blog di masukan oleh admin dan ditampilkan di halaman blog website.

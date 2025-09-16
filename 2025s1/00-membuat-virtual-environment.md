@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Membuat Virtual Environment
 ---
 ### Apa itu Virtual Environment?

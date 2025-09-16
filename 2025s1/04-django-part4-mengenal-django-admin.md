@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Django untuk pemula - Part 4. Mengelola Data melalui Halaman Admin
 ---
 Setelah kita berhasil membuat aplikasi blog dan menambahkan fitur postingan pada artikel sebelumnya, sekarang kita akan mengelola data postingan blog dengan halaman admin.

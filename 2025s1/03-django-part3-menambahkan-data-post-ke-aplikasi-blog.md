@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Django untuk pemula - Part 3. Menambahkan Fitur Post ke Aplikasi Blog
 ---
 Dalam tutorial ini, kita akan menambahkan fitur post ke aplikasi blog yang telah kita buat sebelumnya.
