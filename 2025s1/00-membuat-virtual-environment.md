@@ -1,5 +1,6 @@
 ---
 title: Membuat Virtual Environment di Python
+show_title: false
 ---
 
 ## Apa itu Virtual Environment?

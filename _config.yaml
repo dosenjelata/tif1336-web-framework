@@ -1,4 +1,12 @@
-title: TIF1336 Web Framework
+title: "TIF1336"
+description: "Course website for TIF1336 Web Framework"
 theme: minima
+
+# Tell Jekyll where this project lives
 url: "https://dosenjelata.github.io"
 baseurl: "/tif1336-web-framework"
+
+# Markdown processing
+markdown: kramdown
+kramdown:
+  input: GFM  # GitHub Flavored Markdown (tables, fenced code blocks)
