@@ -1,0 +1,14 @@
+.DS_Store
+.vscode
+__pycache__/
+env/
+node_modules/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+*.env
+*.egg-info/
+*.next/
+out/
