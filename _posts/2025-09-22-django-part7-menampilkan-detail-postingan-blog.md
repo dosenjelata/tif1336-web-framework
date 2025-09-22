@@ -57,7 +57,6 @@ Pada kode di atas, kita menambahkan routing URL baru yang menerima parameter `po
 ## Langkah 4: Menghubungkan Detail Postingan dari Daftar Blog
 Sekarang, kita perlu mengubah template `blog_list.html` agar setiap judul postingan dapat diklik dan mengarahkan pengguna ke halaman detail postingan. Buka file `blog_list.html` dan ubah kode HTML untuk menambahkan tautan pada judul postingan:
 
-{% highlight html %}
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +79,6 @@ Sekarang, kita perlu mengubah template `blog_list.html` agar setiap judul postin
 </body>
 </html>
 ```
-{% endhighlight %}
 
 Pada kode di atas, kita menambahkan elemen `<a>` di sekitar judul postingan yang menggunakan tag template `{% url 'post_detail' post.id %}` untuk membuat tautan ke halaman detail postingan berdasarkan ID postingan.
 ## Langkah 5: Menjalankan Server dan Menguji Fitur Detail Postingan
