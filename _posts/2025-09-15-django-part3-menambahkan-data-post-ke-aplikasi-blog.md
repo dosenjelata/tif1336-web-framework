@@ -1,4 +1,11 @@
-# Django untuk pemula - Part 3. Menambahkan Fitur Post ke Aplikasi Blog
+---
+layout: post
+title: "Django untuk pemula - Part 3. Menambahkan Fitur Post ke Aplikasi Blog"
+date: 2025-09-15 10:00:00 +0700
+categories: [Django, Blog App, Python]
+tags: [Django, Blog App, Python]
+---
+
 Dalam tutorial ini, kita akan menambahkan fitur post ke aplikasi blog yang telah kita buat sebelumnya.
 
 ## Membuat model untuk blog

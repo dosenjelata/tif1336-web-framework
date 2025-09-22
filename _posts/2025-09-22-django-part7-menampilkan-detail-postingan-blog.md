@@ -1,4 +1,11 @@
-# Django untuk pemula - Part 7. Menampilkan Detail Postingan Blog
+---
+layout: post
+title: "Django untuk pemula - Part 7. Menampilkan Detail Postingan Blog"
+date: 2025-09-22 07:02:00 +0700
+categories: [Django, Blog App, Python]
+tags: [Django, Blog App, Python]
+---
+
 Pada bagian sebelumnya, kita telah mempelajari cara menampilkan daftar judul semua postingan blog di halaman web. Pada bagian ini, kita akan mempelajari cara menampilkan detail dari setiap postingan blog ketika pengguna mengklik judul postingan tersebut. 
 
 Kita akan membuat fungsi view untuk mengambil data detail postingan dari database, membuat template HTML untuk menampilkan detail tersebut, dan menghubungkan semuanya melalui routing URL.
@@ -17,6 +24,7 @@ Langkah selanjutnya adalah membuat template `post_detail.html` untuk menampilkan
 ## Langkah 2: Membuat Template HTML untuk Menampilkan Detail Postingan
 Buat file `post_detail.html` di dalam folder `blogs/templates/blogs/` dan tambahkan kode HTML berikut:
 ```html
+{% raw %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +40,7 @@ Buat file `post_detail.html` di dalam folder `blogs/templates/blogs/` dan tambah
     <a href="{% url 'blog_list' %}">Back to Blog List</a>
 </body>
 </html>
+{% endraw %}
 ```
 Pada kode di atas, kita menampilkan judul, konten, dan tanggal pembuatan postingan menggunakan sintaks template Django. Variabel `post` yang kita kirim dari fungsi view digunakan untuk mengakses atribut-atribut dari model `Post`. Kita juga menambahkan link navigasi kembali ke halaman daftar blog di bagian bawah halaman detail.
 ## Langkah 3: Menambahkan Routing URL untuk Fungsi View Detail Postingan

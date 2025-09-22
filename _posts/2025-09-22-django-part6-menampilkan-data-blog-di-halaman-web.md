@@ -1,4 +1,11 @@
-# Django untuk pemula - Part 6. Menampilkan Data Blog di Halaman Web
+---
+layout: post
+title: "Django untuk pemula - Part 6. Menampilkan Data Blog di Halaman Web"
+date: 2025-09-22 07:01:00 +0700
+categories: [Django, Blog App, Python]
+tags: [Django, Blog App, Python]
+---
+
 Pada bagian sebelumnya, kita telah mempelajari tentang routing URL dan views di Django. Pada bagian ini, kita akan mempelajari cara menampilkan data blog yang telah kita buat di bagian sebelumnya ke dalam halaman web menggunakan **template HTML**. Kita akan membuat fungsi view untuk mengambil data blog dari database, membuat template HTML untuk menampilkan data tersebut, dan menghubungkan semuanya melalui routing URL.
 
 ## Apa itu Template di Django?
@@ -51,7 +58,7 @@ Buka file `post_list.html` dan tambahkan kode HTML berikut:
 </head>
 <body>
     <h1>Blog List</h1>
-    <ul>
+    <ul>{% raw %}
         {% for post in blog_posts %}
             <li>
                 <h2>{{ post.title }}</h2>
@@ -59,6 +66,7 @@ Buka file `post_list.html` dan tambahkan kode HTML berikut:
         {% empty %}
             <li>No blog posts available.</li>
         {% endfor %}
+        {% endraw %}
     </ul>
 </body>
 </html>

@@ -1,4 +1,11 @@
-# Django untuk pemula - Part 5. Mengenal Routing URL dan Views di Django
+---
+layout: post
+title: "Django untuk pemula - Part 5. Mengenal Routing URL dan Views di Django"
+date: 2025-09-22 07:00:00 +0700
+categories: [Django, URL Routing, Views, Python]
+tags: [Django, URL Routing, Views, Python]
+---
+
 Pada bagian sebelumnya, kita telah mempelajari tentang model dan bagaimana mengelola data melalui halaman admin. Tahapan selanjutnya adalah menampilkan data tersebut di halaman web menggunakan views dan routing URL.
 
 Sekarang, kita akan mempelajari tentang routing URL dan views di Django. Routing URL diwakili oleh file `urls.py`, sedangkan views diwakili oleh file `views.py`. File `urls.py` dan `views.py` adalah dua file inti yang bekerja sama untuk menangani permintaan (request) dari pengguna dan memberikan respons (response). Silahkan merujuk ke [Artikel HTTP Protokol](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview) untuk memahami konsep request dan response.

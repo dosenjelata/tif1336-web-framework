@@ -1,4 +1,11 @@
-# Django untuk pemula - Part 4. Mengelola Data melalui Halaman Admin
+---
+layout: post
+title: "Django untuk pemula - Part 4. Mengenal Django Admin"
+date: 2025-09-15 10:00:00 +0700
+categories: [Django, Admin, Python]
+tags: [Django, Admin, Python]
+---
+
 Setelah kita berhasil membuat aplikasi blog dan menambahkan fitur postingan pada artikel sebelumnya, sekarang kita akan mengelola data postingan blog dengan halaman admin.
 
 ## Mengelola Data Post melalui Halaman Admin

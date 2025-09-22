@@ -1,4 +1,10 @@
-# Membuat Virtual Environment di Python
+---
+layout: post
+title: "Membuat Virtual Environment di Python"
+date: 2025-09-08 10:00:00 +0700
+categories: [Python, Virtual Environment, Django]
+tags: [Python, Virtual Environment, Django]
+---
 
 ## Apa itu Virtual Environment?
 Virtual environment adalah alat yang membantu mengelola dependensi proyek Python secara terpisah. Dengan menggunakan virtual environment, Anda dapat menghindari konflik antara paket yang dibutuhkan oleh proyek yang berbeda.
