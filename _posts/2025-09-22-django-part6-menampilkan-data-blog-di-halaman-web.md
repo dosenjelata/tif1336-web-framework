@@ -111,7 +111,7 @@ Setelah kita menyelesaikan semua langkah di atas, kita dapat menjalankan server 
    ```http://localhost:8000/blogs/```
 5. Anda akan melihat halaman blog yang menampilkan daftar posting yang telah Anda buat sebelumnya.
 
-![Halaman Blog Menampilkan Daftar Postingan]({{ '/assets/images/django-part6-post-list.png' }})*Figure 1: Tampilan Halaman Blog berisi daftar postingan yang telah ditulis di halaman admin*
+![Halaman Blog Menampilkan Daftar Postingan]({{ '/assets/images/django-part6-post-list.png' | relative_url }})*Figure 1: Tampilan Halaman Blog berisi daftar postingan yang telah ditulis di halaman admin*
 ## Kesimpulan
 Pada bagian ini, kita telah mempelajari cara menampilkan data blog di halaman web menggunakan template HTML di Django. Kita telah membuat fungsi view untuk mengambil data blog dari model `Post`, menyiapkan template HTML untuk menampilkan data tersebut, dan menghubungkan semuanya melalui routing URL. Dengan memahami konsep ini, Anda dapat mulai membangun aplikasi web yang dinamis dan interaktif menggunakan Django.
 
