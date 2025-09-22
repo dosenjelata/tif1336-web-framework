@@ -4,8 +4,9 @@ title: "Django untuk pemula - Part 7. Menampilkan Detail Postingan Blog"
 date: 2025-09-22 07:02:00 +0700
 categories: [Django, Blog App, Python]
 tags: [Django, Blog App, Python]
-render_with_liquid: false
+# render_with_liquid: false
 ---
+{% raw %}
 
 Pada bagian sebelumnya, kita telah mempelajari cara menampilkan daftar judul semua postingan blog di halaman web. Pada bagian ini, kita akan mempelajari cara menampilkan detail dari setiap postingan blog ketika pengguna mengklik judul postingan tersebut. 
 
@@ -93,3 +94,4 @@ Pada bagian ini, kita telah mempelajari cara menampilkan detail dari setiap post
 ## Referensi Lanjutan
 - [Django Documentation - Views](https://docs.djangoproject.com/en/stable/topics/http/views/)
 - [Django Documentation - URL dispatcher](https://docs.djangoproject.com/en/stable/topics/http/urls/)
+{% endraw %}
