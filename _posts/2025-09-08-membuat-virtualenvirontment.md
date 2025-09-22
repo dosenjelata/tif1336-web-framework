@@ -1,11 +1,9 @@
----
-layout: post
-title: Membuat Virtual Environment
----
-### Apa itu Virtual Environment?
+# Membuat Virtual Environment di Python
+
+## Apa itu Virtual Environment?
 Virtual environment adalah alat yang membantu mengelola dependensi proyek Python secara terpisah. Dengan menggunakan virtual environment, Anda dapat menghindari konflik antara paket yang dibutuhkan oleh proyek yang berbeda.
 
-### Kenapa kita perlu Virtual Environment?
+## Kenapa kita perlu Virtual Environment?
 1. **Isolasi Proyek**: Setiap proyek dapat memiliki dependensi yang berbeda tanpa saling mengganggu.
 2. **Manajemen Versi**: Memungkinkan penggunaan versi paket yang berbeda untuk proyek yang berbeda.
 3. **Kemudahan Distribusi**: Memudahkan distribusi proyek dengan menyertakan file `requirements.txt` yang berisi daftar paket yang dibutuhkan.
@@ -17,7 +15,7 @@ Virtual environment adalah alat yang membantu mengelola dependensi proyek Python
 9. **Pengembangan Kolaboratif**: Memudahkan tim pengembang untuk bekerja pada proyek yang sama dengan lingkungan yang konsisten.
 
 
-### Langkah-langkah Membuat Virtual Environment
+## Langkah-langkah Membuat Virtual Environment
 Studi Kasus: Membuat virtual environment untuk proyek Django. Kita akan membuat project bernama `website_django`.
 1. **Buka terminal atau command prompt dan buat folder project**
    ```bash
