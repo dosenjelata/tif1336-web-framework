@@ -65,7 +65,7 @@ python manage.py runserver
 ```
 Buka browser dan akses URL `http://127.0.0.1:8000/blogs/`. Anda akan melihat halaman blog yang telah Anda buat di fungsi view `home`.
 
-![Halaman Blog Menampilkan Judul]({{ '/assets/images/django-part5-blogs-page.png' }})*Figure 1: Tampilan Halaman Blog dari alamat http://127.0.0.1:8000/blogs/*
+![Halaman Blog Menampilkan Judul]({{ '/assets/images/django-part5-blogs-page.png' | relative_url }})*Figure 1: Tampilan Halaman Blog dari alamat http://127.0.0.1:8000/blogs/*
 {: style="display:block;text-align:center;font-size:0.9em;color:#555;" }
 
 Di artikel selanjutnya, kita akan menambahkan lebih banyak fitur ke halaman blog ini, seperti menampilkan daftar postingan blog dari database.
