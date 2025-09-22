@@ -119,5 +119,3 @@ Pada bagian ini, kita telah mempelajari cara menampilkan data blog di halaman we
 1. [Django Documentation - Views](https://docs.djangoproject.com/en/4.0/topics/http/views/)
 2. [Django Documentation - Templates](https://docs.djangoproject.com/en/4.0/topics/templates/)
 3. [Django Documentation - URL dispatcher](https://docs.djangoproject.com/en/4.0/topics/http/urls/)
-## Latihan
-1. Tambahkan fitur untuk menampilkan detail blog ketika judul blog diklik di halaman daftar blog.
