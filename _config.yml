@@ -22,8 +22,8 @@ title: TIF1336 Pemrograman Web Framework
 email: dosen.jelata@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Course website for TIF1336 Web Framework Teknik Informatika UMS.
-baseurl: "tif1336-web-framework/" # the subpath of your site, e.g. /blog
-url: "https://dosenjelata.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/tif1336-web-framework" # the subpath of your site, e.g. /blog
+url: "https://dosenjelata.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  dosenjelata
 
 # Build settings

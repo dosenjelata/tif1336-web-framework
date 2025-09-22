@@ -63,7 +63,11 @@ Sekarang, jalankan server Django dengan perintah berikut:
 ```bash
 python manage.py runserver
 ```
-Buka browser dan akses URL `http://127.0.0.1:8000/blogs/`. Anda akan melihat halaman blog yang telah Anda buat di fungsi view `home`. 
+Buka browser dan akses URL `http://127.0.0.1:8000/blogs/`. Anda akan melihat halaman blog yang telah Anda buat di fungsi view `home`.
+
+![Halaman Blog Menampilkan Judul]({{ '/assets/images/django-part5-blogs-page.png'| relative_url }})*Figure 1: Tampilan Halaman Blog dari alamat http://127.0.0.1:8000/blogs/*
+{: style="display:block;text-align:center;font-size:0.9em;color:#555;" }
+
 Di artikel selanjutnya, kita akan menambahkan lebih banyak fitur ke halaman blog ini, seperti menampilkan daftar postingan blog dari database.
 ## Kesimpulan
 Routing URL dan Views adalah dua komponen penting dalam pengembangan aplikasi web dengan Django. Routing URL mengarahkan permintaan pengguna ke fungsi atau kelas di Views, sedangkan Views menangani logika bisnis dan mengembalikan respons yang sesuai. Dengan memahami konsep ini, Anda dapat mulai membangun aplikasi web yang dinamis dan interaktif menggunakan Django. Pada bagian selanjutnya, kita akan mempelajari tentang template di Django untuk membuat tampilan halaman web yang lebih menarik.
