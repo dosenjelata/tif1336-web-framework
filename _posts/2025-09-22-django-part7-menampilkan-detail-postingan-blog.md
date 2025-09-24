@@ -56,7 +56,7 @@ urlpatterns = [
 ```
 Pada kode di atas, kita menambahkan routing URL baru yang menerima parameter `post_id` sebagai integer. URL ini akan mengarahkan permintaan ke fungsi view `post_detail` yang telah kita buat sebelumnya.
 ## Langkah 4: Menghubungkan Detail Postingan dari Daftar Blog
-Sekarang, kita perlu mengubah template `blog_list.html` agar setiap judul postingan dapat diklik dan mengarahkan pengguna ke halaman detail postingan. Buka file `blog_list.html` dan ubah kode HTML untuk menambahkan tautan pada judul postingan:
+Sekarang, kita perlu mengubah template `post_list.html` agar setiap judul postingan dapat diklik dan mengarahkan pengguna ke halaman detail postingan. Buka file `post_list.html` dan ubah kode HTML untuk menambahkan tautan pada judul postingan:
 
 ```html
 <!DOCTYPE html>
@@ -87,7 +87,7 @@ Sekarang, jalankan server Django dengan perintah berikut:
 ```bash
 python manage.py runserver
 ```
-Buka browser dan akses URL `http://127.0.0.1:8000/` untuk melihat daftar postingan blog. Klik pada judul postingan untuk melihat detailnya. Pastikan semua fitur berfungsi dengan baik. Jika Anda mengikuti langkah-langkah di atas dengan benar, Anda sekarang dapat melihat detail dari setiap postingan blog ketika mengklik judulnya.
+Buka browser dan akses URL `http://127.0.0.1:8000/blogs/` untuk melihat daftar postingan blog. Klik pada judul postingan untuk melihat detailnya. Pastikan semua fitur berfungsi dengan baik. Jika Anda mengikuti langkah-langkah di atas dengan benar, Anda sekarang dapat melihat detail dari setiap postingan blog ketika mengklik judulnya.
 ## Kesimpulan
 Pada bagian ini, kita telah mempelajari cara menampilkan detail dari setiap postingan blog di halaman web menggunakan Django. Kita membuat fungsi view untuk mengambil data detail postingan, membuat template HTML untuk menampilkan detail tersebut, dan menghubungkannya melalui routing URL. Dengan memahami konsep ini, Anda dapat membuat aplikasi web yang lebih interaktif dan informatif menggunakan Django.
 
