@@ -38,7 +38,7 @@ Buat file `post_detail.html` di dalam folder `blogs/templates/blogs/` dan tambah
     <p>{{ post.content }}</p>
     <small>Published on {{ post.created_at }}</small>
     <br>
-    <a href="{% url 'blog_list' %}">Back to Blog List</a>
+    <a href="{% url 'post_list' %}">Back to Blog List</a>
 </body>
 </html>
 ```
@@ -48,9 +48,9 @@ Pada kode di atas, kita menampilkan judul, konten, dan tanggal pembuatan posting
 Buka file `blogs/urls.py` dan tambahkan routing URL untuk fungsi view `post_detail`. Berikut adalah contoh kode untuk menambahkan routing URL:
 ```python
 from django.urls import path
-from .views import blog_list, post_detail
+from .views import get_blog_posts, post_detail
 urlpatterns = [
-    path('', blog_list, name='blog_list'),
+    path('', get_blog_posts, name='post_list'),
     path('<int:post_id>/', post_detail, name='post_detail'),
 ]
 ```

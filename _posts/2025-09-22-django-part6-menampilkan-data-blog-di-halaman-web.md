@@ -95,7 +95,7 @@ from .views import get_blog_posts
 
 urlpatterns = [
     # path('', home, name='home'),
-    path('', get_blog_posts, name='home'),
+    path('', get_blog_posts, name='post_list'),
 ]
 ```
 Dari file `views.py`, kita mengimpor fungsi `get_blog_posts` yang telah kita buat sebelumnya menggantikan fungsi `home`. Kita juga mendisable (mengomentari) routing URL untuk fungsi `home` dan menambahkan routing URL untuk fungsi `get_blog_posts`. Dengan ini, ketika kita mengakses URL dasar dari aplikasi `blogs`, maka sekarang fungsi `get_blog_posts` akan dipanggil dan menampilkan halaman daftar blog yang telah kita buat.
