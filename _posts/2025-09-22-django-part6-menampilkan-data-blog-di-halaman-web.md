@@ -29,8 +29,9 @@ Kita akan menyiapkan template HTML untuk menampilkan data blog tersebut. Kita ak
 website_django/
 │├── blogs/
 │   ├── migrations/
-│   ├── templates/blogs/
-│   │   └── post_list.html
+│   ├── templates/
+│   │   └── blogs/
+│   │       └── post_list.html
 │   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
