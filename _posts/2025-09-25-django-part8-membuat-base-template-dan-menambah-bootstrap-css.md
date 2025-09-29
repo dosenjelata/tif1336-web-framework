@@ -212,14 +212,15 @@ Buka browser Anda dan akses `http://127.0.0.1:8000/` untuk melihat halaman utama
 {% endraw %}
 
 Berikut tampilan dari halaman utama dan halaman blog Anda:
-- Halaman Utama (Home):
+### Halaman Utama (Home)
 ![Home Page]({{ '/assets/images/08-home.png' | relative_url }})*Figure 1: Tampilan Halaman Blog at http://127.0.0.1:8000/*
 {: style="display:block;text-align:center;font-size:0.9em;color:#555;" }
-- Halaman Blog:
-![Blog Page]('a
-')*Figure 2: Tampilan Halaman Blog at http://127.0.0.1:8000/blogs/*
+
+### Halaman Blog
+![Blog Page]({{ '/assets/images/08-blogs.png' | relative_url }})*Figure 2: Tampilan Halaman Blog at http://127.0.0.1:8000/blogs/*
 {: style="display:block;text-align:center;font-size:0.9em;color:#555;" }
-- Halaman Detail Postingan:
+
+### Halaman Detail Postingan
 ![Post Detail Page]({{ '/assets/images/08-post-detail.png' | relative_url }})*Figure 3: Tampilan Halaman Detail Postingan at http://127.0.0.1:8000/blogs/1/*
 {: style="display:block;text-align:center;font-size:0.9em;color:#555;" }
 
