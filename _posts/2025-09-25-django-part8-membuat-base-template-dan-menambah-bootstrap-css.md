@@ -209,13 +209,15 @@ Sekarang, jalankan server Django Anda dengan perintah berikut:
 python manage.py runserver
 ```
 Buka browser Anda dan akses `http://127.0.0.1:8000/` untuk melihat halaman utama blog Anda. Pastikan anda telah mengisi beberapa postingan di admin panel untuk melihat halaman blog (lihat bagian sebelumnya tentang halaman admin).
+{% endraw %}
 
 Berikut tampilan dari halaman utama dan halaman blog Anda:
 - Halaman Utama (Home):
 ![Home Page]({{ '/assets/images/08-home.png' | relative_url }})*Figure 1: Tampilan Halaman Blog at http://127.0.0.1:8000/*
 {: style="display:block;text-align:center;font-size:0.9em;color:#555;" }
 - Halaman Blog:
-![Blog Page]({{ '/assets/images/08-blog.png' | relative_url }})*Figure 2: Tampilan Halaman Blog at http://127.0.0.1:8000/blogs/*
+![Blog Page]('a
+')*Figure 2: Tampilan Halaman Blog at http://127.0.0.1:8000/blogs/*
 {: style="display:block;text-align:center;font-size:0.9em;color:#555;" }
 - Halaman Detail Postingan:
 ![Post Detail Page]({{ '/assets/images/08-post-detail.png' | relative_url }})*Figure 3: Tampilan Halaman Detail Postingan at http://127.0.0.1:8000/blogs/1/*
@@ -223,4 +225,3 @@ Berikut tampilan dari halaman utama dan halaman blog Anda:
 
 Dengan mengikuti langkah-langkah di atas, Anda telah berhasil membuat base template dan menambahkan file CSS menggunakan Bootstrap untuk mempercantik tampilan situs web Anda.
 
-{% endraw %}
