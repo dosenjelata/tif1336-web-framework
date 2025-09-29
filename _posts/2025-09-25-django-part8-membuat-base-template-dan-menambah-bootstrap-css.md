@@ -31,6 +31,7 @@ website_django/
     ├── ...
 └── templates/
     └── base.html
+    └── home.html
     └── partials/
         ├── _header.html
         └── _footer.html
@@ -40,6 +41,7 @@ website_django/
     ├── settings.py
     ├── urls.py
     └── wsgi.py
+    └── views.py
 ```
 Tambahkan kode HTML berikut di dalam `templates/base.html`:
 ```html
@@ -107,9 +109,9 @@ Sekarang, kita perlu memodifikasi template `post_list.html` dan `post_detail.htm
 {% block content %}
 <h1 class="mb-4">Blog Posts</h1>
 
-{% if posts %}
+{% if blog_posts %}
   <ul class="list-group">
-    {% for post in posts %}
+    {% for post in blog_posts %}
       <li class="list-group-item">
         <a href="{% url 'post_detail' post.id %}" class="text-decoration-none">
           {{ post.title }}
@@ -132,7 +134,7 @@ Buka `templates/blogs/post_detail.html` dan ubah isinya menjadi seperti berikut:
 <article>
   <h1 class="mb-3">{{ post.title }}</h1>
   <p class="text-muted small">
-    Published on {{ post.created_at|date:"F j, Y, g:i a" }}
+    Published on {{ post.published_date|date:"F j, Y, g:i a" }}
   </p>
   <hr>
   <div class="mt-3">
@@ -167,8 +169,8 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path("", views.home, name="home"),
+    path('admin/', admin.site.urls),
     path('blogs/', include('blogs.urls')),
 ]
 ```
@@ -179,7 +181,29 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'home.html')
 ```
-## Langkah 6: Menjalankan Server dan Melihat Hasilnya
+## Langkah 6: Menambahkan setting untuk Templates
+Pastikan setting untuk templates di `settings.py` sudah benar. Buka file `settings.py` di dalam direktori project django Anda (`website_django/settings.py`) dan pastikan menambahkan 'DIRS': [BASE_DIR / "templates"]. 
+
+Bagian TEMPLATES akan terlihat seperti berikut:
+```python
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / "templates"],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+```
+
+## Langkah 7: Menjalankan Server dan Melihat Hasilnya
 Sekarang, jalankan server Django Anda dengan perintah berikut:
 ```bash
 python manage.py runserver
