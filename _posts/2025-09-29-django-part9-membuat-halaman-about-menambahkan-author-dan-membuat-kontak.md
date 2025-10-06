@@ -56,6 +56,10 @@ from django.shortcuts import render
 def about(request):
     return render(request, 'about.html')
 ```
+Paling terakhir, update href di navbar bagian About yang ada di file `templates/partials/_header.html` yang sebelumnya masih mengarah ke `#` menjadi seperti berikut:
+```html
+<a href="{% url 'about' %}" class="text-decoration-none">About</a>
+```
 
 ## Langkah 2: Menambahkan Field Author pada Model Post
 Buka file `models.py` di dalam aplikasi `blogs` dan tambahkan field `author` pada model `Post`.
