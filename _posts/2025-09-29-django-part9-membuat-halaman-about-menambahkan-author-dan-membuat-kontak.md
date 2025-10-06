@@ -265,13 +265,21 @@ Sekarang, jalankan server Django dan pergi ke halaman Contact untuk menguji form
 
 ## Tampilkan Hasilnya
 Sekarang, kita dapat melihat hasil perbaikan aplikasi blog kita dengan mengunjungi beberapa URL berikut:
-### Halaman Home: `http://localhost:8000/`
+### Halaman Home: `http://localhost:8000/` 
+![Home Page]({{ '/assets/images/08-home.png' | relative_url }})
 ### Halaman About: `http://localhost:8000/about/`
+![About Page]({{ '/assets/images/09-about.png' | relative_url }})
 ### Halaman Blog: `http://localhost:8000/blogs/`
+![Blog Page]({{ '/assets/images/08-blogs.png' | relative_url }})
 ### Halaman Detail Post: `http://localhost:8000/blogs/<post_id>/` (ganti `<post_id>` dengan ID post yang ada)
+![Post Detail Page]({{ '/assets/images/08-post-detail.png' | relative_url }})
 ### Halaman Contact: `http://localhost:8000/blogs/contact/`
+![Contact Page]({{ '/assets/images/09-contact.png' | relative_url }})
 ### Halaman Terima Kasih Contact: `http://localhost:8000/blogs/contact/thanks/`
+![Contact Thanks Page]({{ '/assets/images/09-thankyou.png' | relative_url }})
 ### Halaman Admin: `http://localhost:8000/admin/`
+![Admin Page]({{ '/assets/images/09-admin.png' | relative_url }})
+![Admin Page Contact Message]({{ '/assets/images/09-admin-messages.png' | relative_url }})
 
 Dengan langkah-langkah di atas, kita telah berhasil memperbaiki aplikasi blog kita dengan menambahkan halaman About, menambahkan field author pada model Post, serta menambahkan halaman Contact lengkap dengan form dan penyimpanan pesan ke database. Selain itu, kita juga menambahkan admin interface untuk model ContactMessage agar kita dapat mengelola pesan yang masuk melalui halaman admin Django.
 
