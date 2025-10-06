@@ -81,7 +81,7 @@ Setelah menambahkan field `author`, kita perlu membuat dan menjalankan migrasi u
 python manage.py makemigrations
 python manage.py migrate
 ```
-Apabila ketika menjalankan migrasi muncul error karena field `author` tidak boleh kosong, kita bisa mengatasi ini dengan memberikan nilai default sementara. Misalnya, kita bisa menetapkan user admin sebagai author default. Sehingga, ketika diminta untuk memasukkan nilai default, masukkan ID user admin (biasanya 1):
+Apabila ketika menjalankan migrasi muncul pertanyaan karena field `author` tidak boleh kosong, kita bisa mengatasi ini dengan memberikan nilai default sementara. Misalnya, kita bisa menetapkan user admin sebagai author default. Sehingga, ketika diminta untuk memasukkan nilai default, masukkan ID user admin (biasanya 1):
 
 
 Alternatif lainnya adalah dengan
@@ -161,7 +161,7 @@ class ContactForm(forms.ModelForm):
 Selanjutnya, buat view untuk menangani form Contact. Buka file `views.py` di dalam aplikasi `blogs` dan tambahkan kode berikut:
 ```python
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import TemplateView, CreateView
 from .forms import ContactForm
 from .models import ContactMessage
 
