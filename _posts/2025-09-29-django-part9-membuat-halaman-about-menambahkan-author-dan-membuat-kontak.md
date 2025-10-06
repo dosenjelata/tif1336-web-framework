@@ -81,9 +81,15 @@ Setelah menambahkan field `author`, kita perlu membuat dan menjalankan migrasi u
 python manage.py makemigrations
 python manage.py migrate
 ```
-Apabila ketika menjalankan migrasi muncul error karena field `author` tidak boleh kosong, kita bisa mengatasi ini dengan memberikan nilai default sementara. Misalnya, kita bisa menetapkan user admin sebagai author default.
+Apabila ketika menjalankan migrasi muncul error karena field `author` tidak boleh kosong, kita bisa mengatasi ini dengan memberikan nilai default sementara. Misalnya, kita bisa menetapkan user admin sebagai author default. Sehingga, ketika diminta untuk memasukkan nilai default, masukkan ID user admin (biasanya 1):
+```
 
-Alternatif lainnya adalah dengan mengijinkan field `author` untuk menerima nilai `null` dan `blank` sementara waktu:
+Alternatif lainnya adalah dengan
+1. Menuliskan default user ke dalam field `author`.
+```python
+author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  # Ganti 1 dengan ID user admin Anda jika berbeda
+```
+2. Mengijinkan field `author` untuk menerima nilai `null` dan `blank` sementara waktu:
 ```python
 author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 ```
@@ -99,7 +105,7 @@ Buka file `templates/blogs/post_detail.html` dan perbarui tampilannya untuk mena
   <h1 class="h2 mb-2">{{ post.title }}</h1>
   <p class="text-muted small mb-3">
     By <strong>{{ post.author.get_full_name|default:post.author.username }}</strong>
-    — {{ post.created_at|date:"F j, Y, g:i a" }}
+    — {{ post.published_date|date:"F j, Y, g:i a" }}
   </p>
   <hr>
   <div class="mt-3">
@@ -107,7 +113,7 @@ Buka file `templates/blogs/post_detail.html` dan perbarui tampilannya untuk mena
   </div>
 </article>
 
-<a href="{% url 'blog:index' %}" class="btn btn-outline-secondary mt-4">← Back to Blog</a>
+<a href="{% url 'post_list' %}" class="btn btn-outline-secondary mt-4">← Back to Blog</a>
 {% endblock %}
 ```
 
@@ -221,7 +227,7 @@ Terakhir, buat file `contact_thanks.html` di dalam folder `blogs/templates/blogs
 <div class="py-5 text-center">
   <h1 class="fw-bold">Thank you!</h1>
   <p class="text-muted">Your message has been received.</p>
-  <a href="{% url 'blog:index' %}" class="btn btn-outline-secondary mt-3">Back to Blog</a>
+  <a href="{% url 'home' %}" class="btn btn-outline-secondary mt-3">Back to Home</a>
 </div>
 {% endblock %}
 ```
