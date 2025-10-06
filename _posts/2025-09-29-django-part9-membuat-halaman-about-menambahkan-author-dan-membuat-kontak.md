@@ -167,13 +167,13 @@ from .models import ContactMessage
 
 
 class ContactView(CreateView):
-    template_name = "contact.html"
+    template_name = "blogs/contact.html"
     form_class = ContactForm
     model = ContactMessage
     success_url = reverse_lazy("contact_thanks")
 
 class ContactThanksView(TemplateView):
-    template_name = "contact_thanks.html"
+    template_name = "blogs/contact_thanks.html"
 ```
 
 Selanjutnya, buat file `contact.html` di dalam folder `blogs/templates/blogs`, yaitu `templates/blogs/contact.html`, dan tambahkan kode berikut:
