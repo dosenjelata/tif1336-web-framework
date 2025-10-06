@@ -74,7 +74,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 ```
 Setelah menambahkan field `author`, kita perlu membuat dan menjalankan migrasi untuk memperbarui database:
 ```bash
