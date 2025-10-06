@@ -242,6 +242,10 @@ urlpatterns = [
     path("contact/thanks/", ContactThanksView.as_view(), name="contact_thanks"),
 ]
 ```
+Jangan lupa untuk mengupdate href di navbar bagian Contact yang ada di file `templates/partials/_header.html` yang sebelumnya masih mengarah ke # menjadi seperti berikut:
+```html
+<a href="{% url 'contact' %}" class="text-decoration-none">Contact</a>
+```
 ## Langkah 5: Menambahkan Admin Interface untuk Model ContactMessage
 Buka file `admin.py` di dalam aplikasi `blogs` dan tambahkan model `ContactMessage` ke admin interface:
 ```python
