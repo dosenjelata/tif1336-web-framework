@@ -82,7 +82,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 Apabila ketika menjalankan migrasi muncul error karena field `author` tidak boleh kosong, kita bisa mengatasi ini dengan memberikan nilai default sementara. Misalnya, kita bisa menetapkan user admin sebagai author default. Sehingga, ketika diminta untuk memasukkan nilai default, masukkan ID user admin (biasanya 1):
-```
+
 
 Alternatif lainnya adalah dengan
 1. Menuliskan default user ke dalam field `author`.
