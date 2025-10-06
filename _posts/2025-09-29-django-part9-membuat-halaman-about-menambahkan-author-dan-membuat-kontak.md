@@ -262,7 +262,7 @@ class ContactMessageAdmin(admin.ModelAdmin):
 ```
 
 Sekarang, jalankan server Django dan pergi ke halaman Contact untuk menguji form Contact. Isi form dan kirimkan. Anda akan diarahkan ke halaman terima kasih. Pesan yang dikirim akan disimpan di database. Setelah itu, buka halaman admin untuk melihat model `ContactMessage` di admin interface.
-
+{% endraw %}
 ## Tampilkan Hasilnya
 Sekarang, kita dapat melihat hasil perbaikan aplikasi blog kita dengan mengunjungi beberapa URL berikut:
 ### Halaman Home: `http://localhost:8000/` 
@@ -283,4 +283,3 @@ Sekarang, kita dapat melihat hasil perbaikan aplikasi blog kita dengan mengunjun
 
 Dengan langkah-langkah di atas, kita telah berhasil memperbaiki aplikasi blog kita dengan menambahkan halaman About, menambahkan field author pada model Post, serta menambahkan halaman Contact lengkap dengan form dan penyimpanan pesan ke database. Selain itu, kita juga menambahkan admin interface untuk model ContactMessage agar kita dapat mengelola pesan yang masuk melalui halaman admin Django.
 
-{% endraw %}
