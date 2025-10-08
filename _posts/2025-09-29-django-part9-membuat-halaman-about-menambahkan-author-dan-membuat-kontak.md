@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Django untuk pemula - Part 9. Menambahkan Author, Membuat Halaman About dan Halaman Contact"
-date: 2025-09-25 07:02:00 +0700
+date: 2025-10-06 07:02:00 +0700
 categories: [Django, Blog App, Python]
 tags: [Django, Blog App, Python]
 ---
@@ -81,10 +81,18 @@ Setelah menambahkan field `author`, kita perlu membuat dan menjalankan migrasi u
 python manage.py makemigrations
 python manage.py migrate
 ```
-Apabila ketika menjalankan migrasi muncul pertanyaan karena field `author` tidak boleh kosong, kita bisa mengatasi ini dengan memberikan nilai default sementara. Misalnya, kita bisa menetapkan user admin sebagai author default. Sehingga, ketika diminta untuk memasukkan nilai default, masukkan ID user admin (biasanya 1):
+Apabila ketika menjalankan migrasi muncul pertanyaan berikut:
+```bash
+It is impossible to add a non-nullable field 'author' to post without specifying a default. This is because the database needs something to populate existing rows.
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit and manually define a default value in models.py.
+Select an option: 
+```
 
+Itu karena field `author` tidak boleh kosong. Kita bisa mengatasi ini dengan memberikan nilai default sementara. Misalnya, kita bisa menetapkan user admin sebagai author default. Sehingga, ketika diminta untuk memasukkan nilai default, masukkan ID user admin (biasanya 1):
 
-Alternatif lainnya adalah dengan
+Alternatif lainnya agar tidak muncul pertanyaan ketika migrasi adalah dengan cara:
 1. Menuliskan default user ke dalam field `author`.
 ```python
 author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  # Ganti 1 dengan ID user admin Anda jika berbeda
@@ -93,6 +101,7 @@ author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  # Ganti 1
 ```python
 author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 ```
+Tetapi, cara kedua ini tidak direkomendasikan karena field `author` seharusnya wajib diisi. Jika anda menggunakan cara ini, pastikan semua postingan memiliki author dengan cara mengupdate data di database setelah migrasi selesai, misalnya melalui Django Admin.
 
 ## Langkah 3: Memperbarui Tampilan Post Detail
 Buka file `templates/blogs/post_detail.html` dan perbarui tampilannya untuk menampilkan informasi author. Ubah isinya menjadi seperti berikut:
