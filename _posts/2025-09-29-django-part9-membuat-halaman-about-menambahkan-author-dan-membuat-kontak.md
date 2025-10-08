@@ -83,14 +83,17 @@ python manage.py migrate
 ```
 Apabila ketika menjalankan migrasi muncul pertanyaan berikut:
 ```bash
-It is impossible to add a non-nullable field 'author' to post without specifying a default. This is because the database needs something to populate existing rows.
+It is impossible to add a non-nullable field 
+'author' to post without specifying a default. 
+This is because the database needs something to 
+populate existing rows.
 Please select a fix:
  1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
  2) Quit and manually define a default value in models.py.
 Select an option: 
 ```
 
-Itu karena field `author` tidak boleh kosong. Kita bisa mengatasi ini dengan memberikan nilai default sementara. Misalnya, kita bisa menetapkan user admin sebagai author default. Sehingga, ketika diminta untuk memasukkan nilai default, masukkan ID user admin (biasanya 1):
+Itu dikarenakan field `author` tidak boleh kosong. Kita bisa mengatasi ini dengan memberikan nilai default sementara. Misalnya, kita bisa menetapkan user admin sebagai author default. Sehingga, ketika diminta untuk memasukkan nilai default, masukkan ID user admin (biasanya 1):
 
 Alternatif lainnya agar tidak muncul pertanyaan ketika migrasi adalah dengan cara:
 1. Menuliskan default user ke dalam field `author`.
