@@ -11,7 +11,7 @@ Pada seri tutorial ini, kita akan membangun sebuah website blog menggunakan Djan
 ## Apa itu uv?
 [uv](https://docs.astral.sh/uv/) adalah *package manager* dan *project manager* untuk Python yang dikembangkan oleh Astral. uv menggantikan beberapa alat sekaligus, seperti `pip`, `venv`, dan `pip-tools`.
 
-Jika Anda sudah membaca tutorial [Membuat Virtual Environment di Python]({% post_url 2025-09-08-membuat-virtualenvirontment %}), Anda sudah mengenal cara membuat virtual environment dengan `python -m venv`, mengaktifkannya, lalu menginstal paket dengan `pip`. Dengan uv, langkah-langkah tersebut menjadi lebih sederhana:
+Pada [Part 0]({% post_url 2025-09-08-membuat-virtualenvirontment %}), kita sudah mengenal cara membuat virtual environment dengan `python -m venv`, mengaktifkannya, lalu menginstal paket dengan `pip`. Dengan uv, langkah-langkah tersebut menjadi lebih sederhana:
 
 | Kebutuhan | Cara lama (`venv` + `pip`) | Dengan uv |
 |---|---|---|

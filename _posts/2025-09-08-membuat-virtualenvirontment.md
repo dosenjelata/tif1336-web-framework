@@ -1,10 +1,12 @@
 ---
 layout: post
-title: "Membuat Virtual Environment di Python"
+title: "Django untuk pemula - Part 0. Membuat Virtual Environment di Python"
 date: 2025-09-08 10:00:00 +0700
 categories: [Python, Virtual Environment, Django]
 tags: [Python, Virtual Environment, Django]
 ---
+
+Sebelum mulai membangun website dengan Django, kita perlu memahami konsep virtual environment terlebih dahulu. Pada bagian ini kita akan berlatih membuat virtual environment dengan cara bawaan Python, yaitu `venv` dan `pip`. Proyek Django yang sebenarnya akan kita siapkan pada Part 1.
 
 ## Apa itu Virtual Environment?
 Virtual environment adalah alat yang membantu mengelola dependensi proyek Python secara terpisah. Dengan menggunakan virtual environment, Anda dapat menghindari konflik antara paket yang dibutuhkan oleh proyek yang berbeda.
@@ -22,15 +24,15 @@ Virtual environment adalah alat yang membantu mengelola dependensi proyek Python
 
 
 ## Langkah-langkah Membuat Virtual Environment
-Studi Kasus: Membuat virtual environment untuk proyek Django. Kita akan membuat project bernama `website_django`.
-1. **Buka terminal atau command prompt dan buat folder project**
+Studi Kasus: Membuat virtual environment untuk latihan dan menginstal Django di dalamnya. Kita akan membuat folder latihan bernama `latihan_venv`. Folder ini hanya untuk latihan dan boleh dihapus setelah selesai. Proyek blog kita, `website_django`, akan dibuat dengan cara yang berbeda pada Part 1.
+1. **Buka terminal atau command prompt dan buat folder latihan**
    ```bash
-   mkdir website_django
+   mkdir latihan_venv
    ```
 2. **Masuk ke direktori proyek Anda**
    Gunakan perintah `cd` untuk berpindah ke direktori di mana Anda ingin membuat virtual environment.
    ```bash
-    cd website_django
+    cd latihan_venv
     ```
 3. **Pastikan Python sudah terinstal**
    ```bash
@@ -87,3 +89,8 @@ Studi Kasus: Membuat virtual environment untuk proyek Django. Kita akan membuat 
    ```
 
 Dengan mengikuti langkah-langkah di atas, Anda dapat dengan mudah membuat dan mengelola virtual environment untuk proyek Python Anda.
+
+## Selanjutnya: Mengenal uv
+Cara `venv` + `pip` di atas sudah berfungsi dengan baik, tetapi ada beberapa hal yang harus kita ingat sendiri: mengaktifkan virtual environment setiap kali membuka terminal, dan memperbarui `requirements.txt` setiap kali menambah paket. Ada alat modern bernama **uv** yang mengurus semua itu secara otomatis dan jauh lebih cepat.
+
+Mulai [Part 1]({% post_url 2025-09-08-django-part1-menyiapkan-proyek-django-dengan-uv %}), kita akan menggunakan uv untuk menyiapkan proyek `website_django` dan menjalankan semua perintah Django di seri tutorial ini.
