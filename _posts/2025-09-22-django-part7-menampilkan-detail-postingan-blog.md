@@ -85,7 +85,7 @@ Pada kode di atas, kita menambahkan elemen `<a>` di sekitar judul postingan yang
 ## Langkah 5: Menjalankan Server dan Menguji Fitur Detail Postingan
 Sekarang, jalankan server Django dengan perintah berikut:
 ```bash
-python manage.py runserver
+uv run python manage.py runserver
 ```
 Buka browser dan akses URL `http://127.0.0.1:8000/blogs/` untuk melihat daftar postingan blog. Klik pada judul postingan untuk melihat detailnya. Pastikan semua fitur berfungsi dengan baik. Jika Anda mengikuti langkah-langkah di atas dengan benar, Anda sekarang dapat melihat detail dari setiap postingan blog ketika mengklik judulnya.
 ## Kesimpulan

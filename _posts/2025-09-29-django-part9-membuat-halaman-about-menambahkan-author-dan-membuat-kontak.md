@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Django untuk pemula - Part 9. Menambahkan Author, Membuat Halaman About dan Halaman Contact"
-date: 2025-10-06 07:02:00 +0700
+date: 2025-09-29 07:02:00 +0700
 categories: [Django, Blog App, Python]
 tags: [Django, Blog App, Python]
 ---
@@ -78,8 +78,8 @@ class Post(models.Model):
 ```
 Setelah menambahkan field `author`, kita perlu membuat dan menjalankan migrasi untuk memperbarui database:
 ```bash
-python manage.py makemigrations
-python manage.py migrate
+uv run python manage.py makemigrations
+uv run python manage.py migrate
 ```
 Apabila ketika menjalankan migrasi muncul pertanyaan berikut:
 ```bash
@@ -150,8 +150,8 @@ class ContactMessage(models.Model):
 
 Setelah menambahkan model `ContactMessage`, buat dan jalankan migrasi:
 ```bash
-python manage.py makemigrations
-python manage.py migrate
+uv run python manage.py makemigrations
+uv run python manage.py migrate
 ```
 
 Setelah model dibuat, kita akan membuat form untuk halaman Contact. Buat file baru bernama `forms.py` di dalam aplikasi `blogs` dan tambahkan kode berikut:

@@ -29,12 +29,12 @@ Namun, untuk dapat mengaksesnya, kita perlu membuat superuser terlebih dahulu. S
 1. Buka terminal dan pastikan Anda berada di direktori proyek Django Anda (misalnya `website_django`).
 2. Jalankan perintah berikut untuk membuat superuser:
    ```bash
-   python manage.py createsuperuser
+   uv run python manage.py createsuperuser
    ```
 3. Ikuti instruksi di terminal untuk memasukkan username, email, dan password untuk superuser.
 4. Setelah superuser berhasil dibuat, jalankan server Django dengan perintah:
    ```bash
-   python manage.py runserver
+   uv run python manage.py runserver
    ```
 5. Buka browser dan akses halaman admin Django di `http://127.0.0.1:8000/admin/`.  Masukkan username dan password superuser yang telah dibuat sebelumnya untuk masuk ke halaman admin.
 6. Jika berhasil, Anda akan melihat halaman admin Django yang menampilkan berbagai model yang telah didaftarkan. Untuk saat ini hanya model User dan Group yang tersedia secara default. Model `Post` yang kita buat sebelumnya belum muncul karena kita belum mendaftarkannya di halaman admin.

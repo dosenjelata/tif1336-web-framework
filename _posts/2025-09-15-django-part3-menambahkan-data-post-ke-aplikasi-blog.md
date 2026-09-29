@@ -27,7 +27,7 @@ Setelah membuat model, kita perlu membuat migrasi untuk menerapkan perubahan ini
 
 Membuat file migrasi dilakukan dengan perintah berikut di terminal:
 ```bash
-python manage.py makemigrations
+uv run python manage.py makemigrations
 ```
 Perintah `makemigrations` akan membuat file migrasi berdasarkan perubahan yang kita buat di model. Hasil dari perintah ini adalah sebuah file migrasi yang berisi instruksi untuk membuat tabel `Post` di database. File migrasi ini biasanya disimpan di dalam folder `migrations/` di dalam aplikasi `blogs/`. Struktur foldernya akan terlihat seperti ini:
 ```
@@ -50,7 +50,7 @@ File `0001_initial.py` adalah file migrasi yang baru saja dibuat.
 
 Setelah berhasil membuat file migrasi, langkah selanjutnya adalah menerapkan migrasi tersebut ke database dengan perintah berikut:
 ```bash
-python manage.py migrate
+uv run python manage.py migrate
 ```
 Jika perintah ini berhasil dijalankan, maka tabel `Post` akan dibuat di database sesuai dengan definisi model yang telah kita buat. Kita dapat memeriksa database untuk memastikan bahwa tabel tersebut telah dibuat dengan benar.
 <<gambar tabel post di database sqlite>>

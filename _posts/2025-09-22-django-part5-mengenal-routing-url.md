@@ -61,7 +61,7 @@ Tambahan `path('blogs/', include('blogs.urls'))` menghubungkan routing URL aplik
 ### Langkah 4: Menjalankan Server dan Mengakses Halaman Blog
 Sekarang, jalankan server Django dengan perintah berikut:
 ```bash
-python manage.py runserver
+uv run python manage.py runserver
 ```
 Buka browser dan akses URL `http://127.0.0.1:8000/blogs/`. Anda akan melihat halaman blog yang telah Anda buat di fungsi view `home`.
 

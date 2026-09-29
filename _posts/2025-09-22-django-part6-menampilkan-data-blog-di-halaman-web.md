@@ -106,7 +106,7 @@ Setelah kita menyelesaikan semua langkah di atas, kita dapat menjalankan server 
 2. Arahkan ke direktori proyek Django Anda.
 3. Jalankan perintah berikut untuk memulai server Django:
    ```bash
-   python manage.py runserver
+   uv run python manage.py runserver
    ```
 4. Buka browser web dan akses URL berikut:
    ```http://localhost:8000/blogs/```

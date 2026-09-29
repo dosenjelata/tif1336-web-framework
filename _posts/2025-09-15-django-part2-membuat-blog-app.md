@@ -6,6 +6,8 @@ categories: [Django, Blog App, Python]
 tags: [Django, Blog App, Python]
 ---
 
+Pastikan Anda sudah menyelesaikan [Part 1]({% post_url 2025-09-08-django-part1-menyiapkan-proyek-django-dengan-uv %}), yaitu menyiapkan proyek `website_django` dengan uv. Semua perintah di tutorial ini dijalankan dari folder `website_django` (folder yang berisi `manage.py`).
+
 Kali ini kita akan membuat app di dalam Django. App tersebut adalah sebuah Blog. Kita akan memulai dari blog yang sederhana, yaitu isi blog di masukan oleh admin dan ditampilkan di halaman blog website.
 
 > User Story: Sebagai admin, saya ingin bisa membuat postingan blog di website Django saya. Saya juga ingin bisa mengupdate postingan tersebut dan bisa menghapusnya.
@@ -13,7 +15,7 @@ Kali ini kita akan membuat app di dalam Django. App tersebut adalah sebuah Blog.
 ## Membuat dan menambahkan app
 Untuk membuat app, perintah yang kita gunakan adalah:
 ```bash
-python manage.py startapp blogs
+uv run python manage.py startapp blogs
 ```
 Perintah ini akan membuat folder `blogs` di dalam direktori proyek Django kita. Struktur foldernya akan terlihat seperti ini:
 ```

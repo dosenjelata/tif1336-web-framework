@@ -206,7 +206,7 @@ TEMPLATES = [
 ## Langkah 7: Menjalankan Server dan Melihat Hasilnya
 Sekarang, jalankan server Django Anda dengan perintah berikut:
 ```bash
-python manage.py runserver
+uv run python manage.py runserver
 ```
 Buka browser Anda dan akses `http://127.0.0.1:8000/` untuk melihat halaman utama blog Anda. Pastikan anda telah mengisi beberapa postingan di admin panel untuk melihat halaman blog (lihat bagian sebelumnya tentang halaman admin).
 {% endraw %}
