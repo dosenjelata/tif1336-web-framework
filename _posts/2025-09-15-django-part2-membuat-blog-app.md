@@ -6,7 +6,7 @@ categories: [Django, Blog App, Python]
 tags: [Django, Blog App, Python]
 ---
 
-Pastikan Anda sudah menyelesaikan [Part 1]({% post_url 2025-09-08-django-part1-menyiapkan-proyek-django-dengan-uv %}), yaitu menyiapkan proyek `website_django` dengan uv. Semua perintah di tutorial ini dijalankan dari folder `website_django` (folder yang berisi `manage.py`).
+Pastikan Anda sudah menyelesaikan [Part 1]({{ site.baseurl }}{% post_url 2025-09-08-django-part1-menyiapkan-proyek-django-dengan-uv %}), yaitu menyiapkan proyek `website_django` dengan uv. Semua perintah di tutorial ini dijalankan dari folder `website_django` (folder yang berisi `manage.py`).
 
 Kali ini kita akan membuat app di dalam Django. App tersebut adalah sebuah Blog. Kita akan memulai dari blog yang sederhana, yaitu isi blog di masukan oleh admin dan ditampilkan di halaman blog website.
 

@@ -93,4 +93,4 @@ Dengan mengikuti langkah-langkah di atas, Anda dapat dengan mudah membuat dan me
 ## Selanjutnya: Mengenal uv
 Cara `venv` + `pip` di atas sudah berfungsi dengan baik, tetapi ada beberapa hal yang harus kita ingat sendiri: mengaktifkan virtual environment setiap kali membuka terminal, dan memperbarui `requirements.txt` setiap kali menambah paket. Ada alat modern bernama **uv** yang mengurus semua itu secara otomatis dan jauh lebih cepat.
 
-Mulai [Part 1]({% post_url 2025-09-08-django-part1-menyiapkan-proyek-django-dengan-uv %}), kita akan menggunakan uv untuk menyiapkan proyek `website_django` dan menjalankan semua perintah Django di seri tutorial ini.
+Mulai [Part 1]({{ site.baseurl }}{% post_url 2025-09-08-django-part1-menyiapkan-proyek-django-dengan-uv %}), kita akan menggunakan uv untuk menyiapkan proyek `website_django` dan menjalankan semua perintah Django di seri tutorial ini.

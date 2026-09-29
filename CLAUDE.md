@@ -27,7 +27,11 @@ bundle exec jekyll build           # build into _site/ (a successful build is th
 - Django template syntax (`{% ... %}`, `{{ ... }}`) conflicts with Liquid. Wrap any post section with Django template code in `{% raw %}` ... `{% endraw %}`. Otherwise the Jekyll build fails or silently mangles the code.
 - Image links must use Liquid so the `baseurl` is applied, e.g. `![Alt]({{ '/assets/images/09-about.png' | relative_url }})`. Put them **outside** the `{% raw %}` block; in existing posts, `{% endraw %}` sits just before the screenshot section at the end.
 
+- Links between posts are written as `[text]({{ site.baseurl }}{% post_url 2025-09-08-<slug> %})`. On Jekyll 3, `post_url` doesn't add the baseurl, so the prefix is needed on the live site. A local Jekyll 4 build shows these links with the baseurl doubled, and that's expected.
+
 ## Config notes
+
+- **Production is not the local build.** GitHub Pages builds straight from `main` with the `github-pages` gem (Jekyll 3.10), not the Jekyll 4.4 in the `Gemfile`. A passing local build doesn't guarantee a passing deploy. Pages also runs `jekyll-optional-front-matter`, which renders any root `.md` file even without front matter. Non-site Markdown files must therefore be listed under `exclude:` in `_config.yml`, as `CLAUDE.md` is.
 
 - `_config.yml` sets `baseurl: "/tif1336-web-framework"`, so internal links need `relative_url`.
 - `_config.yml` lists `jekyll-seo-tag` under plugins. The `Gemfile` doesn't declare it, but it comes in as a dependency of `minima`.

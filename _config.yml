@@ -14,3 +14,12 @@ permalink: /:categories/:year/:month/:day/:title/
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+
+# GitHub Pages renders .md files even without front matter, so keep repo docs out of the site
+exclude:
+  - CLAUDE.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
