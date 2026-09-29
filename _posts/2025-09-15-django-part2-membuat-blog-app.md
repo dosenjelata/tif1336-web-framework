@@ -8,7 +8,7 @@ tags: [Django, Blog App, Python]
 
 Pastikan Anda sudah menyelesaikan [Part 1]({{ site.baseurl }}{% post_url 2025-09-08-django-part1-menyiapkan-proyek-django-dengan-uv %}), yaitu menyiapkan proyek `website_django` dengan uv. Semua perintah di tutorial ini dijalankan dari folder `website_django` (folder yang berisi `manage.py`).
 
-Kali ini kita akan membuat app di dalam Django. App tersebut adalah sebuah Blog. Kita akan memulai dari blog yang sederhana, yaitu isi blog di masukan oleh admin dan ditampilkan di halaman blog website.
+Kali ini kita akan membuat app di dalam Django. App tersebut adalah sebuah Blog. Kita akan memulai dari blog yang sederhana, yaitu isi blog dimasukkan oleh admin dan ditampilkan di halaman blog website.
 
 > User Story: Sebagai admin, saya ingin bisa membuat postingan blog di website Django saya. Saya juga ingin bisa mengupdate postingan tersebut dan bisa menghapusnya.
 
@@ -33,7 +33,7 @@ website_django/
     └── ...
 ```
 Membuat app saja tidaklah cukup. Agar app tersebut terbaca oleh Django, setelah membuat app, kita perlu mendaftarkannya di dalam `settings.py` agar Django mengenalinya. Buka file `settings.py` yang ada di dalam folder `website_django/website_django/` dan tambahkan aplikasi blogs ke dalam daftar `INSTALLED_APPS`.
-Secara default, django Framework sudah menyiapkan 6 buah aplikasi bawaan yang tercantum di bagian INSTALLED_APPS , seperti yang tampil di bawah ini.
+Secara default, Django sudah menyiapkan 6 buah aplikasi bawaan yang tercantum di bagian `INSTALLED_APPS`, seperti yang tampil di bawah ini.
 ```python
 # Application definition
 
@@ -63,7 +63,7 @@ Perhatikan bahwa menambahkan `blogs.apps.BlogsConfig` adalah cara yang direkomen
 ## Kesimpulan
 Dalam tutorial ini, kita telah berhasil membuat aplikasi blog di dalam proyek Django kita dan mendaftarkannya di dalam `settings.py`. Dengan langkah ini, kita telah menyiapkan dasar untuk mengembangkan aplikasi blog lebih lanjut. Pada tutorial berikutnya, kita akan menambahkan fitur post ke dalam aplikasi blog kita. Tetap ikuti tutorial selanjutnya untuk melanjutkan pengembangan aplikasi blog kita!
 ## Referensi Lanjutan
-1. File settings.py di Django: https://docs.djangoproject.com/en/5.2/topics/settings/
-2. Referensi settings.py: https://docs.djangoproject.com/en/5.2/ref/settings/
-3. Panduan Lengkap tentang INSTALLED_APPS di Django: https://docs.djangoproject.com/en/5.2/ref/settings/#installed-apps
-4. Konfigurasi Aplikasi di Django: https://docs.djangoproject.com/en/5.2/ref/applications/
+1. File settings.py di Django: https://docs.djangoproject.com/en/6.1/topics/settings/
+2. Referensi settings.py: https://docs.djangoproject.com/en/6.1/ref/settings/
+3. Panduan Lengkap tentang INSTALLED_APPS di Django: https://docs.djangoproject.com/en/6.1/ref/settings/#installed-apps
+4. Konfigurasi Aplikasi di Django: https://docs.djangoproject.com/en/6.1/ref/applications/

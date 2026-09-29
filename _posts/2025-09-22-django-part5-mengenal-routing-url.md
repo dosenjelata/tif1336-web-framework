@@ -8,12 +8,12 @@ tags: [Django, URL Routing, Views, Python]
 
 Pada bagian sebelumnya, kita telah mempelajari tentang model dan bagaimana mengelola data melalui halaman admin. Tahapan selanjutnya adalah menampilkan data tersebut di halaman web menggunakan views dan routing URL.
 
-Sekarang, kita akan mempelajari tentang routing URL dan views di Django. Routing URL diwakili oleh file `urls.py`, sedangkan views diwakili oleh file `views.py`. File `urls.py` dan `views.py` adalah dua file inti yang bekerja sama untuk menangani permintaan (request) dari pengguna dan memberikan respons (response). Silahkan merujuk ke [Artikel HTTP Protokol](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview) untuk memahami konsep request dan response.
+Sekarang, kita akan mempelajari tentang routing URL dan views di Django. Routing URL diwakili oleh file `urls.py`, sedangkan views diwakili oleh file `views.py`. File `urls.py` dan `views.py` adalah dua file inti yang bekerja sama untuk menangani permintaan (request) dari pengguna dan memberikan respons (response). Silakan merujuk ke [Artikel HTTP Protokol](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview) untuk memahami konsep request dan response.
 
 ## Apa itu Routing URL?
 Routing URL adalah cara Django mengarahkan permintaan (request) dari pengguna ke **fungsi** atau **kelas** yang sesuai yang ada di Views untuk menangani permintaan tersebut.
 Routing URL diatur dalam file `urls.py`. Setiap proyek Django memiliki file `urls.py` utama di dalam folder proyek (misalnya `website_django/urls.py`) dan setiap aplikasi juga dapat memiliki file `urls.py` sendiri (misalnya kita tambahkan `blogs/urls.py`).
-Routing URL menggunakan pola (pattern) untuk mencocokkan URL yang diminta dengan fungsi atau kelas di Views. Pola ini ditulis menggunakan ekspresi reguler (regular expressions) atau path converters.
+Routing URL menggunakan pola (pattern) untuk mencocokkan URL yang diminta dengan fungsi atau kelas di Views. Pola ini ditulis sebagai string, misalnya `'blogs/'`, dan dapat berisi bagian yang berubah-ubah seperti `<int:post_id>` (akan kita pelajari di Part 7).
 ## Apa itu Views?
 Views adalah bagian dari Django yang bertanggung jawab untuk menangani logika bisnis aplikasi web. Views menerima permintaan (request) dari pengguna, memprosesnya, dan mengembalikan respons (response) yang sesuai.
 Views diatur dalam file `views.py`. Setiap aplikasi Django memiliki file `views.py` sendiri (misalnya `blogs/views.py`).
@@ -73,7 +73,7 @@ Di artikel selanjutnya, kita akan menambahkan lebih banyak fitur ke halaman blog
 Routing URL dan Views adalah dua komponen penting dalam pengembangan aplikasi web dengan Django. Routing URL mengarahkan permintaan pengguna ke fungsi atau kelas di Views, sedangkan Views menangani logika bisnis dan mengembalikan respons yang sesuai. Dengan memahami konsep ini, Anda dapat mulai membangun aplikasi web yang dinamis dan interaktif menggunakan Django. Pada bagian selanjutnya, kita akan mempelajari tentang template di Django untuk membuat tampilan halaman web yang lebih menarik.
 
 ## Referensi Lanjutan
-- [Django Documentation - URL dispatcher](https://docs.djangoproject.com/en/stable/topics/http/urls/)
-- [Django Documentation - Views](https://docs.djangoproject.com/en/stable/topics/http/views/)
-- [Django Documentation - Writing your first Django app, part 4](https://docs.djangoproject.com/en/stable/intro/tutorial04/)
+- [Django Documentation - URL dispatcher](https://docs.djangoproject.com/en/6.1/topics/http/urls/)
+- [Django Documentation - Views](https://docs.djangoproject.com/en/6.1/topics/http/views/)
+- [Django Documentation - Writing your first Django app, part 4](https://docs.djangoproject.com/en/6.1/intro/tutorial04/)
 - [MDN Web Docs - HTTP Overview](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)

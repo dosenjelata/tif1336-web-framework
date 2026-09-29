@@ -38,7 +38,7 @@ Studi Kasus: Membuat virtual environment untuk latihan dan menginstal Django di 
    ```bash
    python --version
    ```
-   akan menampilkan versi Python yang terinstal di sistem Anda. Jika belum terinstal, silakan unduh dan instal dari [situs resmi Python](https://www.python.org/downloads/).
+   akan menampilkan versi Python yang terinstal di sistem Anda. Django 6 membutuhkan **Python 3.12 atau lebih baru**. Jika Python belum terinstal atau versinya lebih lama, silakan unduh dan instal dari [situs resmi Python](https://www.python.org/downloads/). Di macOS/Linux, jika perintah `python` tidak ditemukan, coba gunakan `python3`.
 4. **Buat virtual environment dengan paket `venv`**
    Gunakan paket `venv` untuk membuat virtual environment.
    ```bash
@@ -71,7 +71,7 @@ Studi Kasus: Membuat virtual environment untuk latihan dan menginstal Django di 
     ```
     Jika berhasil, perintah tersebut akan menampilkan versi Django yang terinstal, misalnya:
     ```bash
-    5.2.6
+    6.1.1
     ```
 8. **Membuat file requirements.txt (opsional)**
    Untuk menyimpan daftar paket yang diinstal dalam virtual environment, Anda dapat membuat file `requirements.txt` dengan perintah:

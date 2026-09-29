@@ -55,5 +55,5 @@ Agar model yang kita buat di aplikasi blog dapat dikelola melalui halaman admin,
 Django Admin adalah alat yang sangat berguna untuk mengelola data aplikasi Django. Dengan mengikuti langkah-langkah di atas, Anda dapat dengan mudah membuat superuser dan mendaftarkan model ke halaman admin. Halaman admin ini akan membantu Anda dalam mengelola konten aplikasi tanpa perlu membuat antarmuka pengguna secara manual. Selamat mencoba!
 
 ## Referensi lanjutan
-1. Membuat Superuser di Django: https://docs.djangoproject.com/en/5.2/ref/django-admin/#createsuperuser
-2. Mengatur dan mengkustomisasi halaman admin: https://docs.djangoproject.com/en/5.2/ref/contrib/admin/
+1. Membuat Superuser di Django: https://docs.djangoproject.com/en/6.1/ref/django-admin/#createsuperuser
+2. Mengatur dan mengkustomisasi halaman admin: https://docs.djangoproject.com/en/6.1/ref/contrib/admin/

@@ -9,39 +9,45 @@ tags: [Django, Blog App, Python]
 
 Pada bagian sebelumnya, kita telah mempelajari cara menampilkan detail dari setiap postingan blog. Pada bagian ini, kita akan mempelajari cara membuat base template yang dapat digunakan kembali untuk header dan footer di seluruh halaman web kita. Dengan menggunakan base template, kita dapat menghindari duplikasi kode dan memudahkan pemeliharaan tampilan situs web.
 ## Langkah 1: Membuat Base Template
-Buat folder templates di dalam direktori project Django Anda jika belum ada. Di dalam folder templates, buat file baru bernama `base.html`. File ini akan berfungsi sebagai template dasar untuk semua halaman web kita.
+Buat folder `templates` di folder utama proyek, yaitu folder yang sama dengan lokasi file `manage.py` (bukan di dalam folder `blogs`). Jalankan perintah berikut dari folder tersebut:
 
 ```bash
 mkdir -p templates
 ```
 
-Jika anda telah selesai mengikuti tutorial ini, Struktur direktori Anda harus terlihat seperti berikut:
+Di dalam folder `templates`, buat file baru bernama `base.html`. File ini akan berfungsi sebagai template dasar untuk semua halaman web kita.
+
+Sekarang proyek kita memiliki **dua** folder `templates` dengan fungsi yang berbeda:
+- `blogs/templates/blogs/` berisi template khusus milik app `blogs` (daftar dan detail postingan) yang sudah kita buat di Part 6 dan 7.
+- `templates/` di folder utama berisi template yang dipakai bersama oleh seluruh proyek, seperti `base.html`, header, footer, dan halaman home.
+
+Jika Anda telah selesai mengikuti tutorial ini, struktur direktori Anda akan terlihat seperti berikut:
 ```
 website_django/
-└── blogs/
-    ├── migrations/
-    ├── templates/
-    │   └── blogs/
-    │       ├── post_list.html
-    │       └── post_detail.html
-    ├── __init__.py
-    ├── admin.py
-    ├── apps.py
-    ├── models.py
-    ├── ...
-└── templates/
-    └── base.html
-    └── home.html
-    └── partials/
-        ├── _header.html
-        └── _footer.html
-└── manage.py
-└── website_django/
-    ├── __init__.py
-    ├── settings.py
-    ├── urls.py
-    └── wsgi.py
-    └── views.py
+├── blogs/
+│   ├── migrations/
+│   ├── templates/
+│   │   └── blogs/
+│   │       ├── post_list.html
+│   │       └── post_detail.html
+│   ├── admin.py
+│   ├── models.py
+│   ├── urls.py
+│   ├── views.py
+│   └── ...
+├── templates/
+│   ├── base.html
+│   ├── home.html
+│   └── partials/
+│       ├── _header.html
+│       └── _footer.html
+├── website_django/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── views.py      ← file baru
+│   └── ...
+├── manage.py
+└── ...
 ```
 Tambahkan kode HTML berikut di dalam `templates/base.html`:
 ```html
@@ -71,6 +77,11 @@ Tambahkan kode HTML berikut di dalam `templates/base.html`:
   </body>
 </html>
 ```
+Beberapa hal penting dari kode di atas:
+- `{% block nama %}...{% endblock %}` mendefinisikan **blok**, yaitu bagian yang isinya dapat diganti oleh template lain. Template `base.html` memiliki blok `title`, `content`, dan `scripts`.
+- `{% include "partials/_header.html" %}` menyisipkan isi file lain ke dalam template ini. Header dan footer kita pisahkan ke file tersendiri agar lebih rapi.
+- Tag `<link>` dan `<script>` memuat Bootstrap langsung dari CDN (internet), sehingga kita tidak perlu mengunduh file Bootstrap. Pastikan komputer Anda terhubung ke internet agar tampilannya muncul.
+
 ## Langkah 2: Membuat Header dan Footer Partial Templates
 Buat folder baru bernama `partials` di dalam folder `templates`. Di dalam folder `partials`, buat dua file baru bernama `_header.html` dan `_footer.html`.
 ```bash
@@ -101,7 +112,7 @@ Tambahkan kode berikut di dalam `templates/partials/_footer.html`:
 </footer>
 ```
 ## Langkah 3: Memodifikasi Template Post List dan Post Detail
-Sekarang, kita perlu memodifikasi template `post_list.html` dan `post_detail.html` untuk menggunakan base template yang telah kita buat. Buka `templates/blogs/post_list.html` dan ubah isinya menjadi seperti berikut:
+Sekarang, kita perlu memodifikasi template `post_list.html` dan `post_detail.html` untuk menggunakan base template yang telah kita buat. Buka `blogs/templates/blogs/post_list.html` dan ubah isinya menjadi seperti berikut:
 ```html
 {% extends "base.html" %}
 {% block title %}Blog - MyBlog{% endblock %}
@@ -124,8 +135,9 @@ Sekarang, kita perlu memodifikasi template `post_list.html` dan `post_detail.htm
 {% endif %}
 {% endblock %}
 ```
+Perhatikan bahwa file ini tidak lagi berisi `<html>`, `<head>`, atau `<body>`. Baris `{% extends "base.html" %}` membuat template ini "mewarisi" seluruh struktur dari `base.html`. Template ini cukup mengisi blok `title` dan `content`, sedangkan header, footer, dan Bootstrap otomatis ikut dari `base.html`.
 
-Buka `templates/blogs/post_detail.html` dan ubah isinya menjadi seperti berikut:
+Buka `blogs/templates/blogs/post_detail.html` dan ubah isinya menjadi seperti berikut:
 ```html
 {% extends "base.html" %}
 {% block title %}{{ post.title }} - MyBlog{% endblock %}
@@ -145,6 +157,8 @@ Buka `templates/blogs/post_detail.html` dan ubah isinya menjadi seperti berikut:
 <a href="{% url 'post_list' %}" class="btn btn-outline-secondary mt-4">← Back to Blog</a>
 {% endblock %}
 ```
+Di sini kita juga menggunakan **filter** template, yaitu penulisan dengan tanda `|`. Filter `date:"F j, Y, g:i a"` mengubah format tanggal menjadi lebih mudah dibaca (misalnya "September 25, 2025, 7:02 a.m."), dan filter `linebreaks` mengubah baris baru pada konten menjadi paragraf HTML.
+
 ## Langkah 4: Menambahkan Halaman Home
 Buat file baru bernama `home.html` di dalam folder `templates`, yaitu `templates/home.html`, dan tambahkan kode berikut:
 ```html
@@ -174,7 +188,7 @@ urlpatterns = [
     path('blogs/', include('blogs.urls')),
 ]
 ```
-Buat fungsi `home` di dalam file `views.py` di direktori project Anda (`website_django/views.py`):
+Baris `from . import views` mengimpor file `views.py` dari folder `website_django/` yang sama dengan `urls.py`. File ini belum ada, jadi buat file baru `website_django/views.py` (di folder yang sama dengan `settings.py`, bukan `blogs/views.py`) dan isi dengan fungsi `home` berikut:
 ```python
 from django.shortcuts import render
 
@@ -182,7 +196,9 @@ def home(request):
     return render(request, 'home.html')
 ```
 ## Langkah 6: Menambahkan setting untuk Templates
-Pastikan setting untuk templates di `settings.py` sudah benar. Buka file `settings.py` di dalam direktori project django Anda (`website_django/settings.py`) dan pastikan menambahkan 'DIRS': [BASE_DIR / "templates"]. 
+Secara default, Django hanya mencari template di folder `templates` milik setiap app (seperti `blogs/templates/`). Agar Django juga mencari di folder `templates/` utama yang kita buat di Langkah 1, kita perlu mendaftarkannya. Buka file `website_django/settings.py`, cari bagian `TEMPLATES`, lalu ubah `'DIRS': []` menjadi `'DIRS': [BASE_DIR / "templates"]`. `BASE_DIR` adalah folder utama proyek (lokasi `manage.py`).
+
+Tanpa langkah ini, Django akan menampilkan error `TemplateDoesNotExist` untuk `base.html` dan `home.html`.
 
 Bagian TEMPLATES akan terlihat seperti berikut:
 ```python
@@ -208,21 +224,31 @@ Sekarang, jalankan server Django Anda dengan perintah berikut:
 ```bash
 uv run python manage.py runserver
 ```
-Buka browser Anda dan akses `http://127.0.0.1:8000/` untuk melihat halaman utama blog Anda. Pastikan anda telah mengisi beberapa postingan di admin panel untuk melihat halaman blog (lihat bagian sebelumnya tentang halaman admin).
+Buka browser Anda dan akses `http://127.0.0.1:8000/` untuk melihat halaman utama blog Anda. Pastikan Anda telah mengisi beberapa postingan di admin panel untuk melihat halaman blog (lihat bagian sebelumnya tentang halaman admin).
 {% endraw %}
 
 Berikut tampilan dari halaman utama dan halaman blog Anda:
 ### Halaman Utama (Home)
-![Home Page]({{ '/assets/images/08-home.png' | relative_url }})*Figure 1: Tampilan Halaman Blog at http://127.0.0.1:8000/*
+![Home Page]({{ '/assets/images/08-home.png' | relative_url }})*Figure 1: Tampilan Halaman Home di http://127.0.0.1:8000/*
 {: style="display:block;text-align:center;font-size:0.9em;color:#555;" }
 
 ### Halaman Blog
-![Blog Page]({{ '/assets/images/08-blogs.png' | relative_url }})*Figure 2: Tampilan Halaman Blog at http://127.0.0.1:8000/blogs/*
+![Blog Page]({{ '/assets/images/08-blogs.png' | relative_url }})*Figure 2: Tampilan Halaman Blog di http://127.0.0.1:8000/blogs/*
 {: style="display:block;text-align:center;font-size:0.9em;color:#555;" }
 
 ### Halaman Detail Postingan
-![Post Detail Page]({{ '/assets/images/08-post-detail.png' | relative_url }})*Figure 3: Tampilan Halaman Detail Postingan at http://127.0.0.1:8000/blogs/1/*
+![Post Detail Page]({{ '/assets/images/08-post-detail.png' | relative_url }})*Figure 3: Tampilan Halaman Detail Postingan di http://127.0.0.1:8000/blogs/1/*
 {: style="display:block;text-align:center;font-size:0.9em;color:#555;" }
 
-Dengan mengikuti langkah-langkah di atas, Anda telah berhasil membuat base template dan menambahkan file CSS menggunakan Bootstrap untuk mempercantik tampilan situs web Anda.
+## Kesimpulan
+{% raw %}
+Pada bagian ini, kita telah membuat base template (`base.html`) yang berisi struktur HTML, header, footer, dan Bootstrap. Halaman-halaman lain cukup menggunakan `{% extends "base.html" %}` dan mengisi blok `title` dan `content`, sehingga kita tidak perlu menulis ulang kode yang sama di setiap halaman. Jika suatu saat kita ingin mengubah header atau footer, cukup ubah satu file dan semua halaman akan ikut berubah.
+
+Kita juga telah membuat halaman Home dengan view di level proyek (`website_django/views.py`) dan mendaftarkan folder `templates/` utama di `settings.py`. Pada tutorial berikutnya, kita akan melengkapi website dengan halaman About, informasi penulis (author) pada postingan, dan halaman Contact.
+{% endraw %}
+
+## Referensi Lanjutan
+1. Template inheritance (pewarisan template) di Django: https://docs.djangoproject.com/en/6.1/ref/templates/language/#template-inheritance
+2. Daftar tag dan filter bawaan Django (`extends`, `block`, `include`, `date`, `linebreaks`, dan lainnya): https://docs.djangoproject.com/en/6.1/ref/templates/builtins/
+3. Dokumentasi Bootstrap 5.3: https://getbootstrap.com/docs/5.3/getting-started/introduction/
 

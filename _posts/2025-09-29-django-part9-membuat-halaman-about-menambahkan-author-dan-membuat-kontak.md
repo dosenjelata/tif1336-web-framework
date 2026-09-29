@@ -18,7 +18,7 @@ Daftar perbaikan yang akan kita lakukan:
 3. Menambahkan halaman Contact.
    1. Membuat model `ContactMessage` untuk menyimpan pesan dari halaman Contact.
    2. Membuat form untuk halaman Contact.
-   3. Menambahkan validasi pada form Contact.
+   3. Menampilkan pesan error (validasi) pada form Contact.
    4. Membuat class-based view untuk menangani form Contact.
    5. Menambahkan admin interface untuk model `ContactMessage`.
 
@@ -50,9 +50,13 @@ urlpatterns = [
     path('about/', views.about, name='about'),  # Menambahkan URL untuk halaman About
 ]
 ```
-Jangan lupa untuk menambahkan fungsi `about` di file `website_django/views.py`:
+Jangan lupa untuk menambahkan fungsi `about` di file `website_django/views.py`, tepat di bawah fungsi `home` yang sudah ada dari Part 8:
 ```python
 from django.shortcuts import render
+
+def home(request):
+    return render(request, 'home.html')
+
 def about(request):
     return render(request, 'about.html')
 ```
@@ -62,7 +66,7 @@ Paling terakhir, update href di navbar bagian About yang ada di file `templates/
 ```
 
 ## Langkah 2: Menambahkan Field Author pada Model Post
-Buka file `models.py` di dalam aplikasi `blogs` dan tambahkan field `author` pada model `Post`.
+Buka file `models.py` di dalam aplikasi `blogs` dan tambahkan field `author` pada model `Post`. Jangan lupa menambahkan baris import `User` di bagian paling atas.
 ```python
 from django.contrib.auth.models import User
 from django.db import models
@@ -76,6 +80,8 @@ class Post(models.Model):
     def __str__(self):
         return str(self.title)
 ```
+`ForeignKey` membuat relasi antara dua tabel: setiap postingan dimiliki oleh satu user (penulis), dan satu user bisa memiliki banyak postingan. Model `User` adalah model bawaan Django, yaitu user yang sama dengan akun superuser yang kita buat di Part 4. Opsi `on_delete=models.CASCADE` berarti jika seorang user dihapus, semua postingannya juga ikut terhapus.
+
 Setelah menambahkan field `author`, kita perlu membuat dan menjalankan migrasi untuk memperbarui database:
 ```bash
 uv run python manage.py makemigrations
@@ -93,7 +99,10 @@ Please select a fix:
 Select an option: 
 ```
 
-Itu dikarenakan field `author` tidak boleh kosong. Kita bisa mengatasi ini dengan memberikan nilai default sementara. Misalnya, kita bisa menetapkan user admin sebagai author default. Sehingga, ketika diminta untuk memasukkan nilai default, masukkan ID user admin (biasanya 1):
+Pertanyaan ini muncul karena database kita sudah berisi beberapa postingan, sedangkan field `author` wajib diisi. Django perlu tahu siapa author untuk postingan-postingan lama tersebut. Kita bisa menetapkan user admin sebagai author untuk semua postingan lama:
+1. Ketik `1` lalu tekan Enter untuk memilih opsi "Provide a one-off default now".
+2. Django akan meminta nilai default. Ketik ID user admin, biasanya `1` (superuser pertama yang kita buat di Part 4), lalu tekan Enter.
+3. Setelah file migrasi berhasil dibuat, jalankan `uv run python manage.py migrate`.
 
 Alternatif lainnya agar tidak muncul pertanyaan ketika migrasi adalah dengan cara:
 1. Menuliskan default user ke dalam field `author`.
@@ -104,10 +113,10 @@ author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)  # Ganti 1
 ```python
 author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 ```
-Tetapi, cara kedua ini tidak direkomendasikan karena field `author` seharusnya wajib diisi. Jika anda menggunakan cara ini, pastikan semua postingan memiliki author dengan cara mengupdate data di database setelah migrasi selesai, misalnya melalui Django Admin.
+Tetapi, cara kedua ini tidak direkomendasikan karena field `author` seharusnya wajib diisi. Jika Anda menggunakan cara ini, pastikan semua postingan memiliki author dengan cara mengupdate data di database setelah migrasi selesai, misalnya melalui Django Admin.
 
 ## Langkah 3: Memperbarui Tampilan Post Detail
-Buka file `templates/blogs/post_detail.html` dan perbarui tampilannya untuk menampilkan informasi author. Ubah isinya menjadi seperti berikut:
+Buka file `blogs/templates/blogs/post_detail.html` dan perbarui tampilannya untuk menampilkan informasi author. Ubah isinya menjadi seperti berikut:
 ```html
 {% extends "base.html" %}
 {% block title %}{{ post.title }} - MyBlog{% endblock %}
@@ -128,12 +137,11 @@ Buka file `templates/blogs/post_detail.html` dan perbarui tampilannya untuk mena
 <a href="{% url 'post_list' %}" class="btn btn-outline-secondary mt-4">← Back to Blog</a>
 {% endblock %}
 ```
+Karena `author` adalah relasi ke model `User`, kita bisa mengakses data user melalui `post.author`. Filter `default` pada `{{ post.author.get_full_name|default:post.author.username }}` berarti: tampilkan nama lengkap author, tetapi jika nama lengkapnya kosong, tampilkan username-nya.
 
 ## Langkah 4: Menambahkan Halaman Contact
-Buat model baru untuk menyimpan pesan dari halaman Contact. Buka file `models.py` di dalam aplikasi `blogs` dan tambahkan model `ContactMessage`:
+Buat model baru untuk menyimpan pesan dari halaman Contact. Buka file `models.py` di dalam aplikasi `blogs` dan tambahkan model `ContactMessage` di bawah model `Post` (baris import di atas tidak perlu ditulis ulang):
 ```python
-from django.db import models
-
 class ContactMessage(models.Model):
     name = models.CharField(max_length=120)
     email = models.EmailField()
@@ -147,6 +155,11 @@ class ContactMessage(models.Model):
     def __str__(self):
         return f"{self.name} — {self.subject or 'No subject'}"
 ```
+Beberapa hal baru pada model ini:
+- `EmailField` adalah field teks yang otomatis memeriksa apakah isinya berformat email yang valid.
+- `blank=True` pada `subject` berarti field ini boleh dikosongkan saat mengisi form.
+- `auto_now_add=True` pada `created_at` berarti tanggal dan waktu diisi otomatis saat pesan pertama kali disimpan.
+- `class Meta` dengan `ordering = ['-created_at']` mengurutkan pesan dari yang terbaru (tanda `-` berarti urutan menurun).
 
 Setelah menambahkan model `ContactMessage`, buat dan jalankan migrasi:
 ```bash
@@ -170,7 +183,9 @@ class ContactForm(forms.ModelForm):
             "message": forms.Textarea(attrs={"class": "form-control", "rows": 5, "placeholder": "How can we help?"}),
         }
 ```
-Selanjutnya, buat view untuk menangani form Contact. Buka file `views.py` di dalam aplikasi `blogs` dan tambahkan kode berikut:
+`ModelForm` adalah form yang dibuat otomatis berdasarkan model. Kita cukup menyebutkan model dan field yang ingin ditampilkan, dan Django akan membuat input form beserta validasinya (misalnya `name` dan `message` wajib diisi, `email` harus berformat email). Bagian `widgets` digunakan untuk menambahkan class Bootstrap `form-control` dan teks placeholder pada setiap input.
+
+Selanjutnya, buat view untuk menangani form Contact. Buka file `blogs/views.py`, tambahkan baris-baris import berikut di bagian atas file, lalu tambahkan kedua class di bagian bawah file (fungsi `get_blog_posts` dan `post_detail` tetap ada):
 ```python
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView
@@ -187,8 +202,12 @@ class ContactView(CreateView):
 class ContactThanksView(TemplateView):
     template_name = "blogs/contact_thanks.html"
 ```
+Berbeda dengan view sebelumnya yang berupa fungsi, kali ini kita menggunakan **class-based view**, yaitu view berbentuk class yang sudah disediakan Django untuk pekerjaan yang umum:
+- `CreateView` menangani form untuk membuat data baru. Ketika halaman dibuka, form kosong ditampilkan. Ketika form dikirim, Django memvalidasi isinya. Jika valid, data disimpan ke database dan pengguna diarahkan ke `success_url`. Jika tidak valid, form ditampilkan lagi beserta pesan error-nya.
+- `TemplateView` hanya menampilkan sebuah template tanpa logika tambahan, cocok untuk halaman terima kasih.
+- `reverse_lazy("contact_thanks")` membuat URL berdasarkan nama routing, sama seperti tag `{% url %}` di template.
 
-Selanjutnya, buat file `contact.html` di dalam folder `blogs/templates/blogs`, yaitu `templates/blogs/contact.html`, dan tambahkan kode berikut:
+Selanjutnya, buat file `contact.html` di dalam folder `blogs/templates/blogs/`, sehingga lokasinya menjadi `blogs/templates/blogs/contact.html`, dan tambahkan kode berikut:
 ```html
 {% extends "base.html" %}
 {% block title %}Contact - MyBlog{% endblock %}
@@ -229,8 +248,12 @@ Selanjutnya, buat file `contact.html` di dalam folder `blogs/templates/blogs`, y
 </div>
 {% endblock %}
 ```
+Beberapa hal penting pada template ini:
+- `method="post"` berarti data form dikirim dengan metode HTTP POST, yang digunakan untuk mengirim data ke server.
+- `{% csrf_token %}` wajib ada di setiap form POST. Tag ini menambahkan token keamanan untuk mencegah serangan CSRF (*Cross-Site Request Forgery*). Tanpa tag ini, Django akan menolak form dengan error 403.
+- `{{ form.name }}` menampilkan input untuk field `name`, dan `{{ form.name.errors }}` menampilkan pesan error jika isian field tersebut tidak valid. Coba kirim form dengan email yang salah format untuk melihat pesan error-nya.
 
-Terakhir, buat file `contact_thanks.html` di dalam folder `blogs/templates/blogs`, yaitu `templates/blogs/contact_thanks.html`, dan tambahkan kode berikut:
+Terakhir, buat file `contact_thanks.html` di folder yang sama, yaitu `blogs/templates/blogs/contact_thanks.html`, dan tambahkan kode berikut:
 ```html
 {% extends "base.html" %}
 {% block title %}Thanks - MyBlog{% endblock %}
@@ -259,10 +282,12 @@ Jangan lupa untuk mengupdate href di navbar bagian Contact yang ada di file `tem
 <a href="{% url 'contact' %}" class="text-decoration-none">Contact</a>
 ```
 ## Langkah 5: Menambahkan Admin Interface untuk Model ContactMessage
-Buka file `admin.py` di dalam aplikasi `blogs` dan tambahkan model `ContactMessage` ke admin interface:
+Buka file `admin.py` di dalam aplikasi `blogs` dan tambahkan model `ContactMessage` ke admin interface. Perhatikan bahwa model `Post` dari Part 4 tetap didaftarkan, jadi isi lengkap file `admin.py` menjadi seperti berikut:
 ```python
 from django.contrib import admin
-from .models import ContactMessage
+from .models import Post, ContactMessage
+
+admin.site.register(Post)
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
@@ -272,10 +297,16 @@ class ContactMessageAdmin(admin.ModelAdmin):
     ordering = ("-created_at",)
     list_filter = ("created_at",)
 ```
+Di sini kita menggunakan cara yang lebih lengkap dibanding `admin.site.register(Post)`. Decorator `@admin.register(ContactMessage)` mendaftarkan model sekaligus pengaturan tampilannya di class `ContactMessageAdmin`:
+- `list_display` menentukan kolom yang ditampilkan pada daftar pesan.
+- `search_fields` menambahkan kotak pencarian berdasarkan field tersebut.
+- `readonly_fields` membuat `created_at` hanya bisa dibaca, tidak bisa diubah.
+- `ordering` mengurutkan pesan dari yang terbaru.
+- `list_filter` menambahkan filter berdasarkan tanggal di sisi kanan halaman.
 
 Sekarang, jalankan server Django dan pergi ke halaman Contact untuk menguji form Contact. Isi form dan kirimkan. Anda akan diarahkan ke halaman terima kasih. Pesan yang dikirim akan disimpan di database. Setelah itu, buka halaman admin untuk melihat model `ContactMessage` di admin interface.
 {% endraw %}
-## Tampilkan Hasilnya
+## Melihat Hasilnya
 Sekarang, kita dapat melihat hasil perbaikan aplikasi blog kita dengan mengunjungi beberapa URL berikut:
 ### Halaman Home: `http://localhost:8000/` 
 ![Home Page]({{ '/assets/images/08-home.png' | relative_url }})
@@ -293,5 +324,22 @@ Sekarang, kita dapat melihat hasil perbaikan aplikasi blog kita dengan mengunjun
 ![Admin Page]({{ '/assets/images/09-admin.png' | relative_url }})
 ![Admin Page Contact Message]({{ '/assets/images/09-admin-messages.png' | relative_url }})
 
-Dengan langkah-langkah di atas, kita telah berhasil memperbaiki aplikasi blog kita dengan menambahkan halaman About, menambahkan field author pada model Post, serta menambahkan halaman Contact lengkap dengan form dan penyimpanan pesan ke database. Selain itu, kita juga menambahkan admin interface untuk model ContactMessage agar kita dapat mengelola pesan yang masuk melalui halaman admin Django.
+## Kesimpulan
+Dengan langkah-langkah di atas, kita telah berhasil memperbaiki aplikasi blog kita dengan menambahkan halaman About, menambahkan field `author` pada model `Post`, serta menambahkan halaman Contact lengkap dengan form dan penyimpanan pesan ke database. Selain itu, kita juga menambahkan admin interface untuk model `ContactMessage` agar kita dapat mengelola pesan yang masuk melalui halaman admin Django.
+
+Beberapa konsep baru yang kita pelajari pada bagian ini:
+- **Relasi antar model** dengan `ForeignKey`, yang menghubungkan setiap postingan dengan penulisnya.
+- **Migrasi pada tabel yang sudah berisi data**, termasuk cara memberikan nilai default untuk field baru.
+- **ModelForm**, yaitu form yang dibuat otomatis dari model beserta validasinya.
+- **Class-based view** (`CreateView` dan `TemplateView`) sebagai alternatif dari view berbentuk fungsi.
+- **CSRF token** untuk mengamankan form yang dikirim dengan metode POST.
+- **Kustomisasi halaman admin** dengan `ModelAdmin`.
+
+## Referensi Lanjutan
+1. Field `ForeignKey` dan opsi `on_delete`: https://docs.djangoproject.com/en/6.1/ref/models/fields/#foreignkey
+2. Membuat form dari model (ModelForm): https://docs.djangoproject.com/en/6.1/topics/forms/modelforms/
+3. Class-based view untuk form (`CreateView`): https://docs.djangoproject.com/en/6.1/ref/class-based-views/generic-editing/
+4. `TemplateView` dan class-based view dasar: https://docs.djangoproject.com/en/6.1/ref/class-based-views/base/
+5. Perlindungan CSRF di Django: https://docs.djangoproject.com/en/6.1/howto/csrf/
+6. Kustomisasi halaman admin (`ModelAdmin`): https://docs.djangoproject.com/en/6.1/ref/contrib/admin/
 

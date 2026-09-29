@@ -13,10 +13,13 @@ Pada bagian sebelumnya, kita telah mempelajari cara menampilkan daftar judul sem
 Kita akan membuat fungsi view untuk mengambil data detail postingan dari database, membuat template HTML untuk menampilkan detail tersebut, dan menghubungkan semuanya melalui routing URL.
 
 ## Langkah 1: Membuat Fungsi View untuk Menampilkan Detail Postingan
-Buka file `blogs/views.py` dan tambahkan fungsi view untuk menampilkan detail postingan berdasarkan ID postingan. Berikut adalah contoh kode untuk fungsi view tersebut:
+Buka file `blogs/views.py` dan tambahkan fungsi view untuk menampilkan detail postingan berdasarkan ID postingan. Ubah baris import `render` di bagian atas file agar juga mengimpor `get_object_or_404`, lalu tambahkan fungsi `post_detail` di bawah fungsi `get_blog_posts`:
 ```python
 from django.shortcuts import render, get_object_or_404
 from .models import Post
+
+# ... fungsi get_blog_posts dari Part 6 tetap ada di sini ...
+
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return render(request, 'blogs/post_detail.html', {'post': post})
@@ -36,14 +39,16 @@ Buat file `post_detail.html` di dalam folder `blogs/templates/blogs/` dan tambah
 <body>
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
-    <small>Published on {{ post.created_at }}</small>
+    <small>Published on {{ post.published_date }}</small>
     <br>
     <a href="{% url 'post_list' %}">Back to Blog List</a>
 </body>
 </html>
 ```
 
-Pada kode di atas, kita menampilkan judul, konten, dan tanggal pembuatan postingan menggunakan sintaks template Django. Variabel `post` yang kita kirim dari fungsi view digunakan untuk mengakses atribut-atribut dari model `Post`. Kita juga menambahkan link navigasi kembali ke halaman daftar blog di bagian bawah halaman detail.
+Pada kode di atas, kita menampilkan judul, konten, dan tanggal publikasi postingan menggunakan sintaks template Django. Variabel `post` yang kita kirim dari fungsi view digunakan untuk mengakses field dari model `Post`, yaitu `post.title`, `post.content`, dan `post.published_date`. Nama-nama ini harus sama persis dengan nama field di `models.py`.
+
+Kita juga menambahkan link kembali ke halaman daftar blog. Tag `{% url 'post_list' %}` membuat alamat URL berdasarkan **nama** routing yang kita tulis di `blogs/urls.py` pada Part 6 (`name='post_list'`), sehingga kita tidak perlu menulis alamat `/blogs/` secara manual. Jika suatu saat alamatnya berubah, link ini akan ikut menyesuaikan.
 ## Langkah 3: Menambahkan Routing URL untuk Fungsi View Detail Postingan
 Buka file `blogs/urls.py` dan tambahkan routing URL untuk fungsi view `post_detail`. Berikut adalah contoh kode untuk menambahkan routing URL:
 ```python
@@ -54,7 +59,7 @@ urlpatterns = [
     path('<int:post_id>/', post_detail, name='post_detail'),
 ]
 ```
-Pada kode di atas, kita menambahkan routing URL baru yang menerima parameter `post_id` sebagai integer. URL ini akan mengarahkan permintaan ke fungsi view `post_detail` yang telah kita buat sebelumnya.
+Pada kode di atas, kita menambahkan routing URL baru yang menerima parameter `post_id` sebagai integer. Bagian `<int:post_id>` berarti: ambil angka dari URL, lalu kirimkan ke fungsi view sebagai argumen bernama `post_id`. Misalnya, ketika pengguna membuka `http://127.0.0.1:8000/blogs/3/`, Django akan memanggil `post_detail(request, post_id=3)` dan menampilkan postingan dengan ID 3.
 ## Langkah 4: Menghubungkan Detail Postingan dari Daftar Blog
 Sekarang, kita perlu mengubah template `post_list.html` agar setiap judul postingan dapat diklik dan mengarahkan pengguna ke halaman detail postingan. Buka file `post_list.html` dan ubah kode HTML untuk menambahkan tautan pada judul postingan:
 
@@ -92,6 +97,6 @@ Buka browser dan akses URL `http://127.0.0.1:8000/blogs/` untuk melihat daftar p
 Pada bagian ini, kita telah mempelajari cara menampilkan detail dari setiap postingan blog di halaman web menggunakan Django. Kita membuat fungsi view untuk mengambil data detail postingan, membuat template HTML untuk menampilkan detail tersebut, dan menghubungkannya melalui routing URL. Dengan memahami konsep ini, Anda dapat membuat aplikasi web yang lebih interaktif dan informatif menggunakan Django.
 
 ## Referensi Lanjutan
-- [Django Documentation - Views](https://docs.djangoproject.com/en/stable/topics/http/views/)
-- [Django Documentation - URL dispatcher](https://docs.djangoproject.com/en/stable/topics/http/urls/)
+- [Django Documentation - Views](https://docs.djangoproject.com/en/6.1/topics/http/views/)
+- [Django Documentation - URL dispatcher](https://docs.djangoproject.com/en/6.1/topics/http/urls/)
 {% endraw %}

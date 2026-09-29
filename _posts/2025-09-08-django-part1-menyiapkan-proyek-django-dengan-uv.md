@@ -38,7 +38,7 @@ Setelah instalasi selesai, tutup lalu buka kembali terminal Anda, kemudian pasti
 ```bash
 uv --version
 ```
-Perintah ini akan menampilkan versi uv yang terinstal, misalnya `uv 0.8.17`.
+Perintah ini akan menampilkan versi uv yang terinstal, misalnya `uv 0.11.16`.
 
 ## Langkah 2: Membuat Proyek dengan `uv init`
 Buka terminal, masuk ke folder tempat Anda biasa menyimpan proyek, lalu jalankan:
@@ -46,7 +46,7 @@ Buka terminal, masuk ke folder tempat Anda biasa menyimpan proyek, lalu jalankan
 uv init website_django --python 3.13
 cd website_django
 ```
-Perintah `uv init` membuat folder `website_django` beserta beberapa file awal. Opsi `--python 3.13` menentukan versi Python yang digunakan proyek. Jika Python 3.13 belum ada di komputer Anda, uv akan mengunduhnya secara otomatis, jadi Anda tidak perlu menginstal Python secara manual.
+Perintah `uv init` membuat folder `website_django` beserta beberapa file awal. Opsi `--python 3.13` menentukan versi Python yang digunakan proyek. Jika Python 3.13 belum ada di komputer Anda, uv akan mengunduhnya secara otomatis, jadi Anda tidak perlu menginstal Python secara manual. Kita menggunakan Python 3.13 karena Django 6 yang akan kita pakai membutuhkan minimal Python 3.12.
 
 Struktur folder yang dihasilkan:
 ```
@@ -80,7 +80,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "django>=5.2.6",
+    "django>=6.1.1",
 ]
 ```
 
@@ -90,7 +90,7 @@ uv run python -m django --version
 ```
 Jika berhasil, perintah tersebut akan menampilkan versi Django yang terinstal, misalnya:
 ```bash
-5.2.6
+6.1.1
 ```
 
 ## Mengenal `uv run`
@@ -155,4 +155,4 @@ Dalam tutorial ini, kita telah menginstal uv, membuat proyek Python dengan `uv i
 1. Dokumentasi uv: https://docs.astral.sh/uv/
 2. Bekerja dengan proyek di uv: https://docs.astral.sh/uv/guides/projects/
 3. Menginstal Python dengan uv: https://docs.astral.sh/uv/guides/install-python/
-4. Tutorial resmi Django, part 1: https://docs.djangoproject.com/en/5.2/intro/tutorial01/
+4. Tutorial resmi Django, part 1: https://docs.djangoproject.com/en/6.1/intro/tutorial01/
