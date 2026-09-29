@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Blog - MyBlog{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Blog Posts</h1>
+
+{% if blog_posts %}
+  <ul class="list-group">
+    {% for post in blog_posts %}
+      <li class="list-group-item">
+        <a href="{% url 'post_detail' post.id %}" class="text-decoration-none">
+          {{ post.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="text-muted">No posts available yet.</p>
+{% endif %}
+{% endblock %}

@@ -6,6 +6,8 @@ categories: [Django, Blog App, Python]
 tags: [Django, Blog App, Python]
 # render_with_liquid: false
 ---
+
+> **Kode sumber:** mulai dari folder [`part-06`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-06/website_django), hasil akhir ada di folder [`part-07`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-07/website_django).
 {% raw %}
 
 Pada bagian sebelumnya, kita telah mempelajari cara menampilkan daftar judul semua postingan blog di halaman web. Pada bagian ini, kita akan mempelajari cara menampilkan detail dari setiap postingan blog ketika pengguna mengklik judul postingan tersebut. 

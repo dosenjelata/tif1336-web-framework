@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Home - MyBlog{% endblock %}
+
+{% block content %}
+<div class="text-center py-5">
+  <h1 class="fw-bold">Welcome to MyBlog</h1>
+  <p class="lead text-muted">
+    A simple blog built with Django & Bootstrap.
+  </p>
+  <a href="{% url 'post_list' %}" class="btn btn-primary mt-3">Read the Blog</a>
+</div>
+{% endblock %}

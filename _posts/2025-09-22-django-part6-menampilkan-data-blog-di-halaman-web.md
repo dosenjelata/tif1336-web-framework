@@ -5,6 +5,8 @@ date: 2025-09-22 07:01:00 +0700
 categories: [Django, Blog App, Python]
 tags: [Django, Blog App, Python]
 ---
+
+> **Kode sumber:** mulai dari folder [`part-05`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-05/website_django), hasil akhir ada di folder [`part-06`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-06/website_django).
 {% raw %}
 
 Pada bagian sebelumnya, kita telah mempelajari tentang routing URL dan views di Django. Pada bagian ini, kita akan mempelajari cara menampilkan data blog yang telah kita buat di bagian sebelumnya ke dalam halaman web menggunakan **template HTML**. Kita akan membuat fungsi view untuk mengambil data blog dari database, membuat template HTML untuk menampilkan data tersebut, dan menghubungkan semuanya melalui routing URL.

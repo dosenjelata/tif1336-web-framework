@@ -4,3 +4,7 @@ _site
 .jekyll-metadata
 vendor
 .DS_Store
+# Tutorial source code (run locally)
+__pycache__/
+.venv/
+db.sqlite3

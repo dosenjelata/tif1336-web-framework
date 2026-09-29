@@ -5,6 +5,8 @@ date: 2025-09-29 07:02:00 +0700
 categories: [Django, Blog App, Python]
 tags: [Django, Blog App, Python]
 ---
+
+> **Kode sumber:** mulai dari folder [`part-08`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-08/website_django), hasil akhir ada di folder [`part-09`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-09/website_django).
 {% raw %}
 
 Pada bagian sebelumnya, kita telah berhasil membuat website blog sederhana menggunakan Django. Website ini sangat sederhana, tetapi berfungsi dengan baik dan memiliki tampilan yang rapi berkat penggunaan Bootstrap. Beberapa best practices juga telah kita terapkan, seperti penggunaan base template untuk menghindari duplikasi kode.

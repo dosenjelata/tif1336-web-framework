@@ -6,6 +6,8 @@ categories: [Django, Blog App, Python]
 tags: [Django, Blog App, Python]
 ---
 
+> **Kode sumber:** mulai dari folder [`part-02`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-02/website_django), hasil akhir ada di folder [`part-03`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-03/website_django).
+
 Dalam tutorial ini, kita akan menambahkan fitur post ke aplikasi blog yang telah kita buat sebelumnya.
 
 ## Membuat model untuk blog

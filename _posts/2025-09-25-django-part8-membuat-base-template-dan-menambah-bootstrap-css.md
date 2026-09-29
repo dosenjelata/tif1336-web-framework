@@ -5,6 +5,8 @@ date: 2025-09-25 07:02:00 +0700
 categories: [Django, Blog App, Python]
 tags: [Django, Blog App, Python]
 ---
+
+> **Kode sumber:** mulai dari folder [`part-07`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-07/website_django), hasil akhir ada di folder [`part-08`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-08/website_django).
 {% raw %}
 
 Pada bagian sebelumnya, kita telah mempelajari cara menampilkan detail dari setiap postingan blog. Pada bagian ini, kita akan mempelajari cara membuat base template yang dapat digunakan kembali untuk header dan footer di seluruh halaman web kita. Dengan menggunakan base template, kita dapat menghindari duplikasi kode dan memudahkan pemeliharaan tampilan situs web.

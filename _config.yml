@@ -18,6 +18,7 @@ plugins:
 # GitHub Pages renders .md files even without front matter, so keep repo docs out of the site
 exclude:
   - CLAUDE.md
+  - source
   - Gemfile
   - Gemfile.lock
   - vendor

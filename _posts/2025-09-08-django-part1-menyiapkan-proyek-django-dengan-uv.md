@@ -6,6 +6,8 @@ categories: [Django, Blog App, Python]
 tags: [Django, Python, uv]
 ---
 
+> **Kode sumber:** hasil akhir tutorial ini ada di folder [`part-01`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-01/website_django). Lihat juga [daftar kode sumber semua part](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source).
+
 Pada seri tutorial ini, kita akan membangun sebuah website blog menggunakan Django. Sebelum menulis kode, kita perlu menyiapkan lingkungan kerja terlebih dahulu. Pada bagian pertama ini, kita akan menggunakan **uv** untuk mengelola versi Python, virtual environment, dan paket-paket yang dibutuhkan, lalu membuat proyek Django bernama `website_django`.
 
 ## Apa itu uv?

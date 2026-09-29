@@ -6,6 +6,8 @@ categories: [Django, Admin, Python]
 tags: [Django, Admin, Python]
 ---
 
+> **Kode sumber:** mulai dari folder [`part-03`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-03/website_django), hasil akhir ada di folder [`part-04`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-04/website_django).
+
 Setelah kita berhasil membuat aplikasi blog dan menambahkan fitur postingan pada artikel sebelumnya, sekarang kita akan mengelola data postingan blog dengan halaman admin.
 
 ## Mengelola Data Post melalui Halaman Admin

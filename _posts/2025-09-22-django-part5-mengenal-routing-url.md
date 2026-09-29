@@ -6,6 +6,8 @@ categories: [Django, URL Routing, Views, Python]
 tags: [Django, URL Routing, Views, Python]
 ---
 
+> **Kode sumber:** mulai dari folder [`part-04`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-04/website_django), hasil akhir ada di folder [`part-05`](https://github.com/dosenjelata/tif1336-web-framework/tree/main/source/part-05/website_django).
+
 Pada bagian sebelumnya, kita telah mempelajari tentang model dan bagaimana mengelola data melalui halaman admin. Tahapan selanjutnya adalah menampilkan data tersebut di halaman web menggunakan views dan routing URL.
 
 Sekarang, kita akan mempelajari tentang routing URL dan views di Django. Routing URL diwakili oleh file `urls.py`, sedangkan views diwakili oleh file `views.py`. File `urls.py` dan `views.py` adalah dua file inti yang bekerja sama untuk menangani permintaan (request) dari pengguna dan memberikan respons (response). Silakan merujuk ke [Artikel HTTP Protokol](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview) untuk memahami konsep request dan response.
